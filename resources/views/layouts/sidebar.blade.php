@@ -7,10 +7,10 @@
     <ul class="sidebar-menu">
       <li class="menu-header">UKM Recruitment</li>
       <li class="dropdown active">
-        <a href="index.html" class="nav-link"><i data-feather="monitor"></i><span>Dashboard</span></a>
+        <a href="{{url('/dashboard')}}" class="nav-link"><i data-feather="monitor"></i><span>Dashboard</span></a>
       </li>
       <li class="dropdown">
-        <a href="index.html" class="nav-link"><i data-feather="archive"></i><span>UKM Poliwangi</span></a>
+        <a href="{{url('/ukm-poliwangi')}}" class="nav-link"><i data-feather="archive"></i><span>UKM Poliwangi</span></a>
       </li>
       <li class="dropdown">
         <a href="index.html" class="nav-link"><i data-feather="user-plus"></i><span>Pendaftaran</span></a>

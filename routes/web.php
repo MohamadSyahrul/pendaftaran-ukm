@@ -29,6 +29,9 @@ Route::middleware(['auth'])
     Route::get('/edit-profile', function(){
         return view('pages.edit-profil');
     });
+    Route::get('/ukm-poliwangi', function(){
+        return view('pages.ukm-poliwangi');
+    });
 });
 // Route::get('/dashboard', function () {
 //     return view('dashboard');
