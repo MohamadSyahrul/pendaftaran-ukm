@@ -3,6 +3,8 @@
 <head>
   <title>@yield('title')</title>
   @include('layouts.style')
+  
+  @stack('plugin-style')
 </head>
 
 <body>
@@ -32,5 +34,7 @@
     </div>
   </div>
 @include('layouts.script')
+
+@stack('plugin-script')
 </body>
 </html>

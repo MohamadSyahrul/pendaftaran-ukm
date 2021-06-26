@@ -23,7 +23,7 @@
                 </p>    
               </div>
               <div class="card-footer">
-                <a href="#" class="btn btn-primary">Tambah Data</a>
+                <a href="{{route('ukm-poliwangi.create')}}" class="btn btn-primary">Tambah Data</a>
               </div>
             </div>
           </div>
