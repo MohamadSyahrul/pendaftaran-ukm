@@ -67,11 +67,16 @@
                 class="d-sm-none d-lg-inline-block"></span></a>
         <div class="dropdown-menu dropdown-menu-right pullDown">
             <div class="dropdown-title">{{ Auth::user()->name }}</div>
-            <a href="#" class="dropdown-item has-icon"> <i class="far
-                                  fa-user"></i> Profile
-            </a> <a href="#" class="dropdown-item has-icon"> <i class="fas fa-cog"></i>
-                Settings
-            </a>
+            @if(Auth::user()->role == 'admin')
+                <a href="{{url('admin/profile')}}" class="dropdown-item has-icon"> <i class="far
+                                    fa-user"></i> Profile
+                </a>
+            @endif
+            @if(Auth::user()->role == 'mahasiswa')
+                <a href="{{url('mahasiswa/profile')}}" class="dropdown-item has-icon"> <i class="far
+                    fa-user"></i> Profile
+                </a>
+            @endif
             <div class="dropdown-divider"></div>
             <form method="POST" action="{{ route('logout') }}">
                 @csrf

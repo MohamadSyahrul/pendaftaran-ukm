@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
-class PendaftaranController extends Controller
+class KegiatanController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,7 +14,7 @@ class PendaftaranController extends Controller
      */
     public function index()
     {
-        return view('pages.admin.pendaftaran.pendaftaran');
+        return view('pages.admin.kegiatan.index');
     }
 
     /**
@@ -24,9 +24,9 @@ class PendaftaranController extends Controller
      */
     public function create()
     {
-        return view('pages.admin.pendaftaran.detail');
+        return view('pages.admin.kegiatan.detail');
     }
-
+    
     /**
      * Store a newly created resource in storage.
      *
@@ -58,6 +58,7 @@ class PendaftaranController extends Controller
     public function edit($id)
     {
         //
+        
     }
 
     /**

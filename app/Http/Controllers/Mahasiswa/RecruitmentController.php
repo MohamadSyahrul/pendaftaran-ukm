@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers\Mahasiswa;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
-class PendaftaranController extends Controller
+class RecruitmentController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,7 +14,7 @@ class PendaftaranController extends Controller
      */
     public function index()
     {
-        return view('pages.admin.pendaftaran.pendaftaran');
+        //
     }
 
     /**
@@ -24,7 +24,7 @@ class PendaftaranController extends Controller
      */
     public function create()
     {
-        return view('pages.admin.pendaftaran.detail');
+        //
     }
 
     /**

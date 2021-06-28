@@ -34,6 +34,7 @@ Route::middleware([IsAdmin::class])
     });
     Route::resource('ukm-poliwangi', '\App\Http\Controllers\Admin\UkmpoliwangiController');
     Route::resource('pendaftaran', '\App\Http\Controllers\Admin\PendaftaranController');
+    Route::resource('kegiatan', '\App\Http\Controllers\Admin\KegiatanController');
     
 });
 
@@ -41,18 +42,15 @@ Route::middleware([IsMahasiswa::class])
 ->prefix('mahasiswa')
 ->group(function() {
 
-    // Route::get('/profile-mahasiswa', function(){
-    //     return view('pages.profil');
-    // });
-    // Route::get('/edit-profile', function(){
-    //     return view('pages.edit-profil');
-    // });
-    // Route::get('/ukm-poliwangi', function(){
-    //     return view('pages.ukm-poliwangi');
-    // });
-    // Route::get('/tambah-data', function(){
-    //     return view('pages.tambah-data');
-    // });
+    Route::get('profile', function(){
+        return view('pages.profil');
+    });
+    Route::get('/edit-profile', function(){
+        return view('pages.edit-profil');
+    });
+    Route::resource('ukmpoliwangi', '\App\Http\Controllers\Mahasiswa\UkmpoliwangiController');
+    Route::resource('recruitment', '\App\Http\Controllers\Mahasiswa\RecruitmentController');
+    Route::resource('event', '\App\Http\Controllers\Mahasiswa\EventController');
 });
 // Route::get('/dashboard', function () {
 //     return view('dashboard');
