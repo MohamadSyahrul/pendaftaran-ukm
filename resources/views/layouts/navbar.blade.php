@@ -9,9 +9,9 @@
     </ul>
 </div>
 <ul class="navbar-nav navbar-right">
-    <li class="dropdown dropdown-list-toggle mr-3">
+    {{-- <li class="dropdown dropdown-list-toggle mr-3">
       <a href="#" class="btn btn-primary">Info UKM</a>
-    </li>
+    </li> --}}
 
     <li class="dropdown dropdown-list-toggle"><a href="#" data-toggle="dropdown"
             class="nav-link notification-toggle nav-link-lg"><i data-feather="bell" class="bell"></i>

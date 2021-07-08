@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Ukm;
 use Illuminate\Http\Request;
 
 class UkmpoliwangiController extends Controller
@@ -14,7 +15,8 @@ class UkmpoliwangiController extends Controller
      */
     public function index()
     {
-        return view('pages.admin.ukm-poliwangi');
+        $ukm = Ukm::all();
+        return view('pages.admin.ukm-poliwangi',compact('ukm'));
     }
 
     /**
