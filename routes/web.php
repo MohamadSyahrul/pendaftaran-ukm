@@ -42,12 +42,10 @@ Route::middleware([IsMahasiswa::class])
 ->prefix('mahasiswa')
 ->group(function() {
 
-    Route::get('profile', function(){
-        return view('pages.profil');
-    });
-    Route::get('/edit-profile', function(){
-        return view('pages.edit-profil');
-    });
+    Route::resource('profile', '\App\Http\Controllers\Mahasiswa\ProfilController');
+    // Route::get('/edit-profile', function(){
+    //     return view('pages.edit-profil');
+    // });
     Route::resource('ukmpoliwangi', '\App\Http\Controllers\Mahasiswa\UkmpoliwangiController');
     Route::resource('recruitment', '\App\Http\Controllers\Mahasiswa\RecruitmentController');
     Route::resource('event', '\App\Http\Controllers\Mahasiswa\EventController');

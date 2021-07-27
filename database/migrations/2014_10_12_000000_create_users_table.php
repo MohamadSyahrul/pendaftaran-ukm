@@ -16,16 +16,10 @@ class CreateUsersTable extends Migration
         Schema::create('users', function (Blueprint $table) {
             $table->id();
             $table->string('role')->default('mahasiswa');
-            $table->string('name');
+            $table->string('username');
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
-            $table->text('foto')->nullable();
-            $table->bigInteger('nim')->nullable();
-            $table->bigInteger('no_tlp')->nullable();
-            $table->string('alamat')->nullable();
-            $table->string('angkatan')->nullable();
-            $table->string('devisi')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });

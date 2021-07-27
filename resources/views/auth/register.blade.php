@@ -15,8 +15,8 @@
                 @csrf
               <div class="row">
                 <div class="form-group col-12">
-                  <label for="frist_name">First Name</label>
-                  <input id="frist_name" type="text" class="form-control" name="name" autofocus>
+                  <label for="frist_name">Username</label>
+                  <input id="frist_name" type="text" class="form-control" name="username" autofocus>
                 </div>
               </div>
               <div class="form-group">

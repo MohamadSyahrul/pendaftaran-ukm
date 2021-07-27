@@ -66,7 +66,7 @@
             <img alt="image" src="{{asset('assets/img/user.png')}}" class="user-img-radious-style"> <span
                 class="d-sm-none d-lg-inline-block"></span></a>
         <div class="dropdown-menu dropdown-menu-right pullDown">
-            <div class="dropdown-title">{{ Auth::user()->name }}</div>
+            <div class="dropdown-title">{{ Auth::user()->username }}</div>
             @if(Auth::user()->role == 'admin')
                 <a href="{{url('admin/profile')}}" class="dropdown-item has-icon"> <i class="far
                                     fa-user"></i> Profile
