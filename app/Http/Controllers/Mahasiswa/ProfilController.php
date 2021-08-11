@@ -16,7 +16,7 @@ class ProfilController extends Controller
      */
     public function index()
     {
-        
+        // $profil = ProfileUser::all(); 
         return view('pages.profil');
     }
 

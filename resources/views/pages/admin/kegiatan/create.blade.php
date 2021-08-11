@@ -1,6 +1,6 @@
 @extends('layouts.master')
 @section('title')
-Edit Kegiatan
+Create Kegiatan
 @endsection
 @push('plugin-style')
 <link rel="stylesheet" href="{{asset('assets/bundles/chocolat/dist/css/chocolat.css')}}">
@@ -12,16 +12,15 @@ Edit Kegiatan
             <div class="col-12 col-md-6 col-lg-10">
                 <div class="card">
                     <div class="card-header">
-                        <h4>Edit Data</h4>
+                        <h4>Tambah Data</h4>
                     </div>
-                    <form class="form form-horizontal" action="{{route('kegiatan.update',$item->id)}}" method="post"
+                    <form class="form form-horizontal" action="{{route('kegiatan.store')}}" method="post"
                         enctype="multipart/form-data">
                         @csrf
-                        @method('put')
                         <div class="card-body">
                             <div class="form-group">
                                 <label>Judul</label>
-                                <input id="judul" name="judul" type="text" class="form-control" value="{{$item->judul}}">
+                                <input id="judul" name="judul" type="text" class="form-control" required="Tambah Judul">
                             </div>
                             <div class="form-group">
                                 <label>Gambar</label>
@@ -29,7 +28,7 @@ Edit Kegiatan
                             </div>
                             <div class="form-group">
                                 <label>Keterangan</label>
-                                <input id="keterangan" name="keterangan" type="text" class="form-control" value="{{$item->keterangan}}">
+                                <input id="keterangan" name="keterangan" type="text" class="form-control" required="Tambah Keterangan">
                             </div>
                         </div>
                         <div class="card-footer text-right">

@@ -68,14 +68,14 @@
         <div class="dropdown-menu dropdown-menu-right pullDown">
             <div class="dropdown-title">{{ Auth::user()->username }}</div>
             @if(Auth::user()->role == 'admin')
-                <a href="{{url('admin/profile')}}" class="dropdown-item has-icon"> <i class="far
+            <a href="{{url('admin/profile')}}" class="dropdown-item has-icon"> <i class="far
                                     fa-user"></i> Profile
-                </a>
+            </a>
             @endif
             @if(Auth::user()->role == 'mahasiswa')
-                <a href="{{url('mahasiswa/profile')}}" class="dropdown-item has-icon"> <i class="far
+            <a href="{{route('profile.index')}}" class="dropdown-item has-icon"> <i class="far
                     fa-user"></i> Profile
-                </a>
+            </a>
             @endif
             <div class="dropdown-divider"></div>
             <form method="POST" action="{{ route('logout') }}">

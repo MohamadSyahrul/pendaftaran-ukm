@@ -15,7 +15,7 @@ class CreateProfileUsersTable extends Migration
     {
         Schema::create('profile_users', function (Blueprint $table) {
             $table->id();
-            $table->text('foto')->default('default.jpg');
+            $table->string('foto')->default('default.jpg');
             $table->string('nama')->nullable();
             $table->bigInteger('nim')->nullable();
             $table->bigInteger('no_tlp')->nullable();

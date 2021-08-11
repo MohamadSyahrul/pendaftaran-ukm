@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers\Mahasiswa;
 
-use App\Http\Controllers\Controller;
+use App\Models\Event;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
 class EventController extends Controller
 {
@@ -14,7 +15,8 @@ class EventController extends Controller
      */
     public function index()
     {
-        //
+        $item = Event::all();
+        return view('pages.mahasiswa.kegiatan', compact('item'));
     }
 
     /**
@@ -46,7 +48,11 @@ class EventController extends Controller
      */
     public function show($id)
     {
-        //
+        $event = Event::findOrFail($id);
+
+        return view('pages.mahasiswa.show_kegiatan',[
+            "event" => $event
+        ]);
     }
 
     /**

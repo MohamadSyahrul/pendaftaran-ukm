@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Event;
 use Illuminate\Http\Request;
 
 class KegiatanController extends Controller
@@ -14,7 +15,8 @@ class KegiatanController extends Controller
      */
     public function index()
     {
-        return view('pages.admin.kegiatan.index');
+        $item = Event::all();
+        return view('pages.admin.kegiatan.index', compact('item'));
     }
 
     /**
@@ -24,7 +26,7 @@ class KegiatanController extends Controller
      */
     public function create()
     {
-        return view('pages.admin.kegiatan.detail');
+        return view('pages.admin.kegiatan.create');
     }
     
     /**
@@ -35,7 +37,19 @@ class KegiatanController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $event = new Event;
+        $event->judul = $request->judul;
+        $event->keterangan = $request->keterangan;
+        if ($request->hasFile('gambar')) {
+            $nm = $request->gambar;
+            $namaFile = time() . rand(100, 999) . "." . $nm->getClientOriginalExtension();
+            $event->gambar = $namaFile;
+            $nm->move(public_path() . '/img', $namaFile);
+        }else{
+            $event->gambar = 'default.png';
+        }
+        $event->save();
+        return redirect()->route('kegiatan.index');
     }
 
     /**
@@ -46,7 +60,11 @@ class KegiatanController extends Controller
      */
     public function show($id)
     {
-        //
+        $event = Event::findOrFail($id);
+
+        return view('pages.admin.kegiatan.detail',[
+            "event" => $event
+        ]);
     }
 
     /**
@@ -57,8 +75,11 @@ class KegiatanController extends Controller
      */
     public function edit($id)
     {
-        //
-        
+        $event = Event::findOrFail($id);
+
+        return view('pages.admin.kegiatan.edit',[
+            "item" => $event
+        ]);
     }
 
     /**
@@ -70,7 +91,22 @@ class KegiatanController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $validation = $request->validate([
+            'judul' => 'required | max:100',
+            'keterangan' => 'required | max:1000'
+        ]);
+        
+        $ubah = Event::findorfail($id);
+        $awal = $ubah->gambar;
+
+        $dt =[
+            'judul' =>$request['judul'],
+            'keterangan' =>$request['keterangan'],
+            'gambar' => $awal,
+        ];
+        $request->gambar->move(public_path().'/img', $awal);
+        $ubah->update($dt);
+        return redirect()->route('kegiatan.index');
     }
 
     /**
@@ -81,6 +117,16 @@ class KegiatanController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $hapus = Event::findOrFail($id);
+
+        $file = public_path('img/').$hapus->gambar;
+        //cek jika ada gambar
+        if (file_exists($file)){
+            //maka hapus file diforder public/img
+            @unlink($file);
+        }
+        //hapus data didatabase
+        $hapus->delete();
+        return back();
     }
 }

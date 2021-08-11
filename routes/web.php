@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\Mahasiswa\EventController;
 use App\Http\Middleware\IsAdmin;
 use App\Http\Middleware\IsMahasiswa;
 use Facade\FlareClient\View;
@@ -48,7 +49,7 @@ Route::middleware([IsMahasiswa::class])
     // });
     Route::resource('ukmpoliwangi', '\App\Http\Controllers\Mahasiswa\UkmpoliwangiController');
     Route::resource('recruitment', '\App\Http\Controllers\Mahasiswa\RecruitmentController');
-    Route::resource('event', '\App\Http\Controllers\Mahasiswa\EventController');
+    Route::resource('event', EventController::class);
 });
 // Route::get('/dashboard', function () {
 //     return view('dashboard');
