@@ -12,7 +12,7 @@ Edit Profil
                         <h4>Edit Profil</h4>
                     </div>
                     <div class="card-body">
-                        <form action="{{route('profile.update', ['profile' => $user->id])}}" method="POST">
+                        <form action="{{route('profile.update', ['profile' => $user->id])}}" method="POST" enctype="multipart/form-data">
                             @csrf
                             @method('put')
                             <div class="form-group">

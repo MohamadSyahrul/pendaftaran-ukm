@@ -15,11 +15,18 @@ Kegiatan
                             <a href="{{route('event.show', $row->id)}}" class="btn btn-primary">
                                 View
                             </a>
+                            
+
                         </div>
                     </div>
                     <div class="card-body">
                         <p>{{$row->keterangan}}</p>
                     </div>
+                    <div class="card-footer">
+                        <a href="#"  class="btn btn-info">
+                            Daftar</a>
+                    </div>
+
                 </div>
                 @endforeach
             </div>

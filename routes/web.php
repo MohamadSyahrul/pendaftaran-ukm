@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\Mahasiswa\EventController;
 use App\Http\Controllers\Admin\UkmpoliwangiController;
+use App\Http\Controllers\Mahasiswa\ProfilController;
 use App\Http\Controllers\Mahasiswa\UkmpoliwangiController as MahasiswaUkmpoliwangiController;
 
 /*
@@ -29,12 +30,12 @@ Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard
 Route::middleware([IsAdmin::class])
 ->prefix('admin')
 ->group(function() {
-    Route::get('profile', function(){
-        return view('pages.profil');
-    });
-    Route::get('/edit-profile', function(){
-        return view('pages.edit-profil');
-    });
+    // Route::get('profile', function(){
+    //     return view('pages.profil');
+    // });
+    // Route::get('/edit-profile', function(){
+    //     return view('pages.edit-profil');
+    // });    
     Route::resource('ukm-poliwangi', UkmpoliwangiController::class);
     Route::resource('pendaftaran', '\App\Http\Controllers\Admin\PendaftaranController');
     Route::resource('kegiatan', '\App\Http\Controllers\Admin\KegiatanController');
@@ -45,7 +46,7 @@ Route::middleware([IsMahasiswa::class])
 ->prefix('mahasiswa')
 ->group(function() {
 
-    Route::resource('profile', '\App\Http\Controllers\Mahasiswa\ProfilController');
+    Route::resource('profile', ProfilController::class);
     // Route::get('/edit-profile', function(){
     //     return view('pages.edit-profil');
     // });

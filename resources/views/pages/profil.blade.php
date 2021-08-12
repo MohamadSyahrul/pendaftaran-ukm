@@ -10,11 +10,12 @@ Profil {{ Auth::user()->name }}
                 <div class="card author-box card-primary">
                     <div class="card-body">
                         <div class="author-box-left">
-                            <img alt="image" src="assets/img/users/user-1.png"
+                            <img alt="image" src="{{asset('img/'.Auth()->user()->profileUser->foto)}}"
                                 class="rounded-circle author-box-picture">
                             <div class="clearfix"></div>
                             <a href="{{ route('profile.edit', ['profile' => Auth()->user()->profileUser->id] ) }}"
                                 class="btn btn-primary mt-3">Edit Profil</a>
+                                        
                         </div>
 
                         <div class="author-box-details">
