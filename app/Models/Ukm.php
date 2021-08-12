@@ -9,6 +9,7 @@ class Ukm extends Model
 {
     use HasFactory;
     protected $table = "tb_ukm";
+    protected $primaryKey = 'id';
     protected $fillable = [
         'ukm',
         'keterangan',

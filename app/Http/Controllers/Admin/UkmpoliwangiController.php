@@ -38,7 +38,31 @@ class UkmpoliwangiController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $nm = $request->logo;
+        $img = $request->foto;
+        $ft = $request->foto1;
+
+        $namaFile = time().rand(100,999).".".$nm->getClientOriginalName(); 
+        $name = time().rand(100,999).".".$img->getClientOriginalName(); 
+        $imgName = time().rand(100,999).".".$ft->getClientOriginalName(); 
+
+ 
+        $dtUpload = new Ukm; 
+        $dtUpload->ukm = $request->ukm; 
+        $dtUpload->keterangan = $request->keterangan; 
+
+        $dtUpload->logo =  $namaFile; 
+        $dtUpload->foto =  $name; 
+        $dtUpload->foto1 =  $imgName; 
+
+ 
+        $nm->move(public_path().'/img',$namaFile); 
+        $img->move(public_path().'/img',$name); 
+        $ft->move(public_path().'/img',$imgName); 
+
+        $dtUpload->save(); 
+ 
+        return redirect()->route('ukm-poliwangi.index');
     }
 
     /**
@@ -60,7 +84,8 @@ class UkmpoliwangiController extends Controller
      */
     public function edit($id)
     {
-        //
+        $item = Ukm::find($id);
+        return view('pages.admin.ukm-edit',compact('item'));
     }
 
     /**
@@ -72,7 +97,31 @@ class UkmpoliwangiController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $nm = $request->logo;
+        $img = $request->foto;
+        $ft = $request->foto1;
+
+        $namaFile = time().rand(100,999).".".$nm->getClientOriginalName(); 
+        $name = time().rand(100,999).".".$img->getClientOriginalName(); 
+        $imgName = time().rand(100,999).".".$ft->getClientOriginalName(); 
+
+ 
+        $dtUpload = Ukm::find($id); 
+        $dtUpload->ukm = $request->ukm; 
+        $dtUpload->keterangan = $request->keterangan; 
+
+        $dtUpload->logo =  $namaFile; 
+        $dtUpload->foto =  $name; 
+        $dtUpload->foto1 =  $imgName; 
+
+ 
+        $nm->move(public_path().'/img',$namaFile); 
+        $img->move(public_path().'/img',$name); 
+        $ft->move(public_path().'/img',$imgName); 
+
+        $dtUpload->update(); 
+ 
+        return redirect()->route('ukm-poliwangi.index');
     }
 
     /**
@@ -83,6 +132,29 @@ class UkmpoliwangiController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $hapus = Ukm::findOrFail($id);
+
+        $file = public_path('img/').$hapus->logo;
+        $ft = public_path('img/').$hapus->foto;
+        $ftp = public_path('img/').$hapus->foto1;
+
+                //cek jika ada gambar
+                if (file_exists($ftp)){
+                    //maka hapus ftp diforder public/img
+                    @unlink($file);
+                }
+                //cek jika ada gambar
+                if (file_exists($ft)){
+                    //maka hapus ft diforder public/img
+                    @unlink($ft);
+                }
+        //cek jika ada gambar
+        if (file_exists($file)){
+            //maka hapus file diforder public/img
+            @unlink($file);
+        }
+        //hapus data didatabase
+        $hapus->delete();
+        return back();
     }
 }

@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers\Mahasiswa;
 
-use App\Http\Controllers\Controller;
+use App\Models\Ukm;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
 class UkmpoliwangiController extends Controller
 {
@@ -14,7 +15,8 @@ class UkmpoliwangiController extends Controller
      */
     public function index()
     {
-        //
+        $ukm = Ukm::all();
+        return view('pages.mahasiswa.info-ukm',compact('ukm'));
     }
 
     /**

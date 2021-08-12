@@ -26,8 +26,8 @@
       <li class="dropdown  {{ request()->routeIs('dashboard') ? 'active' : '' }}">
         <a href="{{route('dashboard')}}" class="nav-link"><i data-feather="monitor"></i><span>Dashboard</span></a>
       </li>
-      <li class="dropdown {{ request()->routeIs('ukmpoliwangi.index') ? 'active' : '' }}">
-        <a href="{{route('ukmpoliwangi.index')}}" class="nav-link"><i data-feather="archive"></i><span>UKM Poliwangi</span></a>
+      <li class="dropdown {{ request()->routeIs('info-ukm.index') ? 'active' : '' }}">
+        <a href="{{route('info-ukm.index')}}" class="nav-link"><i data-feather="archive"></i><span>UKM Poliwangi</span></a>
       </li>
       <li class="dropdown {{ request()->routeIs('recruitment.index') ? 'active' : '' }}">
         <a href="{{route('recruitment.index')}}" class="nav-link"><i data-feather="check-square"></i><span>Pendaftaran</span></a>
