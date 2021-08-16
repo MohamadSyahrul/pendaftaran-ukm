@@ -9,14 +9,13 @@ Pendaftaran
     @endpush
 
 @section('content')
-<section class="section">
     <div class="section-body">
         <div class="row">
             <div class="col-12">
                 <div class="card">
                     <div class="card-header">
                         <h4>Daftar Pendaftar</h4>
-                        <a href="#" class="btn btn-primary">Cetak</a>
+                        <!-- <a href="#" class="btn btn-primary">Cetak</a> -->
                     </div>
                     <div class="card-body">
                         <div class="table-responsive">
@@ -31,29 +30,43 @@ Pendaftaran
                                         <th>Foto</th>
                                         <th>Jurusan</th>
                                         <th>UKM</th>
+                                        <th>Devisi</th>
                                         <th>Action</th>
                                     </tr>
                                 </thead>
                                 <tbody>
+                                    @foreach($data as $index => $item)
                                     <tr>
                                         <td>
                                             1
                                         </td>
-                                        <td>361855401128</td>
+                                        <td> {{$item->profile->nim}} </td>
                                         <td>
-                                            <a href="{{route('pendaftaran.create')}}">
-                                                SHINTA MAHARANI
-                                            </a>
+                                            {{$item->profile->nama}}
                                         </td>
                                         <td>
-                                            <img alt="image" src="{{asset('assets/img/users/user-5.png')}}" width="35">
+                                            <img alt="image" src="{{asset('img/'.$item->profile->foto)}}"
+                                            class="rounded-circle author-box-picture" width="35px">
                                         </td>
-                                        <td>Teknik Informatika</td>
-                                        <td>GeniWangi</td>
+                                        <td>{{$item->profile->prodi}}</td>
+                                        <td>{{ $item->ukm->ukm }}</td>
+                                        <td>{{ $item->devisi }}</td>
                                         <td>
-                                            <a href="#" class="btn btn-danger">Delete</a>
+                                           <a href="{{route('pendaftaran.edit',$item->id)}}" class="dropdown-item has-icon"><i
+                                    class="far fa-edit"></i> Edit</a>
+                                    
+                                    <form action="{{ route('pendaftaran.destroy',$item->id) }}" method="post"
+                                        class="d-inline" onsubmit="return confirm('Yakin hapus data ?')">
+                                        @method('delete')
+                                        @csrf
+                                        <button type="submit" class="dropdown-item has-icon text-danger">
+                                            <i class="fa fa-trash"></i>
+                                            Delete
+                                        </button>
+                                    </form>
                                         </td>
                                     </tr>
+                                    @endforeach
                                 </tbody>
                             </table>
                         </div>
@@ -62,7 +75,6 @@ Pendaftaran
             </div>
         </div>
     </div>
-</section>
 @endsection
 @push('plugin-script')
 <script src="{{asset('assets/bundles/datatables/datatables.min.js')}}"></script>

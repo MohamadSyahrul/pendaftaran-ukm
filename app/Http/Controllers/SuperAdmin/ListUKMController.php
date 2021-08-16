@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Http\Controllers\Mahasiswa;
+namespace App\Http\Controllers\SuperAdmin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Models\anggota_ukm;
-use Auth;
-class RecruitmentController extends Controller
+use App\Models\ListUkm;
+
+class ListUKMController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,9 +15,8 @@ class RecruitmentController extends Controller
      */
     public function index()
     {
-        $data = anggota_ukm::all();
-         return view('pages.mahasiswa.pendaftaran_mahasiswa.index',compact('data'));
-         
+        $ukm = ListUkm::orderBy('nama_ukm')->get();
+        return view('pages.super_admin.ukm.index',compact('ukm'));
     }
 
     /**
@@ -27,7 +26,7 @@ class RecruitmentController extends Controller
      */
     public function create()
     {
-        //
+
     }
 
     /**
@@ -38,11 +37,11 @@ class RecruitmentController extends Controller
      */
     public function store(Request $request)
     {
-         anggota_ukm::create([
-            'ukm_id' => $request->input('ukm_id'),
-            'profile_id' => Auth::user()->profileUser->id,
+         ListUkm::create([
+            'nama_ukm' => $request->input('ukm'),
         ]);
-        return redirect()->route('recruitment.index');
+        // return view('pages.super_admin.ukm.index',compact('ukm'));
+        return redirect('/super_admin/list-ukm');
 
     }
 
@@ -65,7 +64,8 @@ class RecruitmentController extends Controller
      */
     public function edit($id)
     {
-        //
+        $item = ListUkm::find($id);
+        return view('pages.super_admin.ukm.edit',compact('item'));
     }
 
     /**
@@ -77,7 +77,11 @@ class RecruitmentController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        ListUkm::where('id', $id)->update([
+            'nama_ukm' => $request->input('ukm'),
+        ]);
+        return redirect('/super_admin/list-ukm');
+        
     }
 
     /**
@@ -88,6 +92,8 @@ class RecruitmentController extends Controller
      */
     public function destroy($id)
     {
-        //
+          ListUkm::where('id', $id)->delete();
+        return redirect('/super_admin/list-ukm');
+
     }
 }

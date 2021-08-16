@@ -12,12 +12,17 @@ UKM POLIWANGI
 <section class="section">
     <div class="section-body">
         <div class="row">
-
+            @if($ukm == null)
             <button type="button" class="btn btn-outline-primary mb-2" data-toggle="modal"
                 data-target="#TambahData">Tambah
                 Data</button>
-
+            @else
             @foreach ($ukm as $item)
+
+            <a href="{{route('ukm-poliwangi.edit',$item->id)}}">
+            <button type="button" class="btn btn-outline-primary mb-2">Ubah
+                Data</button></a>
+
             <div class="col-12 col-md-12 col-lg-12">
                 <div class="card">
                     <div class="card-header">
@@ -59,6 +64,7 @@ UKM POLIWANGI
                     </div>
                 </div>
                 @endforeach
+                @endif
         </div>
     </div>
 </section>
@@ -92,8 +98,12 @@ UKM POLIWANGI
                                 <div class="input-group-text">
                                     <i class="fas fa-align-center"></i>
                                 </div>
-                            </div>
-                            <input type="text" class="form-control" name="ukm">
+                            </div>                
+                            <select name="ukm" class="form-control form-control-sm mb-3">
+                                <option value="{{$list_ukm->nama_ukm}}">
+                                  {{$list_ukm->nama_ukm}}
+                                </option>
+                            </select>
                         </div>
                     </div>
                     <div class="form-group">

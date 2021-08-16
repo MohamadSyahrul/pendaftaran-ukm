@@ -17,4 +17,5 @@ class Ukm extends Model
         'foto1',
         'logo',
     ];
+    
 }

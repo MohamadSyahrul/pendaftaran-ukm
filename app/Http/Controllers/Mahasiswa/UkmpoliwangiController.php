@@ -48,7 +48,8 @@ class UkmpoliwangiController extends Controller
      */
     public function show($id)
     {
-        //
+        $ukm = Ukm::where('id', $id)->get();
+        return view('pages.mahasiswa.detail-info-ukm',compact('ukm'));
     }
 
     /**

@@ -43,6 +43,12 @@ class User extends Authenticatable
     ];
 
     public function profileUser() {
-        return $this->hasOne('App\Models\ProfileUser', 'id_user');
+        return $this->hasOne('App\Models\ProfileUser', 'id_user' , 'id');
+    }
+     public function ukm() {
+        return $this->hasOne('App\Models\ListUkm', 'role' , 'nama_ukm');
+    }
+      public function desk_ukm() {
+        return $this->belongsTo('App\Models\Ukm', 'role' , 'ukm');
     }
 }

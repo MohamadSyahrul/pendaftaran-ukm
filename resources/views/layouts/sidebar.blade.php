@@ -10,6 +10,21 @@
       <li class="dropdown  {{ request()->routeIs('dashboard') ? 'active' : '' }}">
         <a href="{{route('dashboard')}}" class="nav-link"><i data-feather="monitor"></i><span>Dashboard</span></a>
       </li>
+      <li class="dropdown {{ request()->routeIs('list-ukm.index') ? 'active' : '' }}">
+        <a href="{{route('list-ukm.index')}}" class="nav-link"><i data-feather="archive"></i><span>List UKM Poliwangi</span></a>
+      </li>
+      <!-- <li class="dropdown {{ request()->routeIs('pendaftaran.index') ? 'active' : '' }}">
+        <a href="{{route('pendaftaran.index')}}" class="nav-link"><i data-feather="user-plus"></i><span>Pendaftaran</span></a>
+      </li> -->
+     <!--  <li class="dropdown {{ request()->routeIs('kegiatan.index') ? 'active' : '' }}">
+        <a href="{{route('kegiatan.index')}}" class="nav-link"><i data-feather="trending-up"></i><span>Kegiatan</span></a>
+      </li> -->
+      @endif
+      @if(Auth::user()->role != 'mahasiswa' && Auth::user()->role != 'admin')
+      <li class="menu-header">UKM Recruitment</li>
+      <li class="dropdown  {{ request()->routeIs('dashboard') ? 'active' : '' }}">
+        <a href="{{route('dashboard')}}" class="nav-link"><i data-feather="monitor"></i><span>Dashboard</span></a>
+      </li>
       <li class="dropdown {{ request()->routeIs('ukm-poliwangi.index') ? 'active' : '' }}">
         <a href="{{route('ukm-poliwangi.index')}}" class="nav-link"><i data-feather="archive"></i><span>UKM Poliwangi</span></a>
       </li>
@@ -20,7 +35,6 @@
         <a href="{{route('kegiatan.index')}}" class="nav-link"><i data-feather="trending-up"></i><span>Kegiatan</span></a>
       </li>
       @endif
-      
       @if(Auth::user()->role == 'mahasiswa')
       <li class="menu-header">UKM Recruitment</li>
       <li class="dropdown  {{ request()->routeIs('dashboard') ? 'active' : '' }}">

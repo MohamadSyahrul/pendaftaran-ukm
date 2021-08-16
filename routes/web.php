@@ -3,10 +3,12 @@
 use Facade\FlareClient\View;
 use App\Http\Middleware\IsAdmin;
 use App\Http\Middleware\IsMahasiswa;
+use App\Http\Middleware\IsUKM;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\Mahasiswa\EventController;
 use App\Http\Controllers\Admin\UkmpoliwangiController;
+use App\Http\Controllers\SuperAdmin\ListUKMController;
 use App\Http\Controllers\Mahasiswa\ProfilController;
 use App\Http\Controllers\Mahasiswa\UkmpoliwangiController as MahasiswaUkmpoliwangiController;
 
@@ -27,7 +29,7 @@ Route::get('/', function () {
 
 Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 
-Route::middleware([IsAdmin::class])
+Route::middleware([IsUKM::class])
 ->prefix('admin')
 ->group(function() {
     // Route::get('profile', function(){
@@ -41,7 +43,22 @@ Route::middleware([IsAdmin::class])
     Route::resource('kegiatan', '\App\Http\Controllers\Admin\KegiatanController');
     
 });
-
+Route::middleware([IsAdmin::class])
+// ->prefix(['robotika','rbb', 'geniwangi' ,'olahraga','kwu','racana','persma','imam','mapala','ksr','menwa'])
+->prefix('super_admin')
+->group(function() {
+    // Route::get('profile', function(){
+    //     return view('pages.profil');
+    // });
+    // Route::get('/edit-profile', function(){
+    //     return view('pages.edit-profil');
+    // });    
+    Route::resource('list-ukm', ListUKMController::class);
+    // Route::resource('list-ukm', ListUKMController::class);
+    // Route::resource('pendaftaran', '\App\Http\Controllers\Admin\PendaftaranController');
+    // Route::resource('kegiatan', '\App\Http\Controllers\Admin\KegiatanController');
+    
+});
 Route::middleware([IsMahasiswa::class])
 ->prefix('mahasiswa')
 ->group(function() {

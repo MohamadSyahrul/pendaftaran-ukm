@@ -33,7 +33,11 @@ Edit UKM
                             <label>Title</label>
                             
 
-                                <input type="text" class="form-control" name="ukm" value="{{$item->ukm}}">
+                                <select name="ukm" class="form-control form-control-sm mb-3">
+                                <option value="{{$list_ukm->nama_ukm}}">
+                                  {{$list_ukm->nama_ukm}}
+                                </option>
+                            </select>
                           
                         </div>
                         <div class="form-group">

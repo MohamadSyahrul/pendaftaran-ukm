@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\ProfileUser;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpKernel\Profiler\Profile;
-
+use Auth;
 class ProfilController extends Controller
 {
     /**
@@ -38,7 +38,48 @@ class ProfilController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // $user = ProfileUser::findorfail($id);
+        // $user->nama = $request->nama;
+        // $user->nim = $request->nim;
+        // $user->no_tlp = $request->no_tlp;
+        // $user->alamat = $request->alamat;
+        // $user->angkatan = $request->angkatan;
+        // $user->prodi = $request->prodi;
+
+        if($request->hasFile('foto')) {
+            $nm = $request->input('foto');
+            $namaFile = time() . rand(100, 999) . "." . $nm->getClientOriginalExtension();
+            // $user->foto = $namaFile;
+            $nm->move(public_path() . '/img', $namaFile);
+            ProfileUser::create([
+            'nama_ukm' => $request->input('ukm'),
+            'nama' => $request->input('nama'),
+            'nim' => $request->input('nim'),
+            'no_tlp' => $request->input('no_tlp'),
+            'alamat' => $request->input('alamat'),
+            'angkatan' => $request->input('angkatan'),
+            'prodi' => $request->input('prodi'),
+            'nama_ukm' => $namaFile,
+            'id_user' => Auth::user()->id,
+
+        ]);
+        }else{
+            $namaFile = 'default.png';
+            ProfileUser::create([
+            'nama_ukm' => $request->input('ukm'),
+            'nama' => $request->input('nama'),
+            'nim' => $request->input('nim'),
+            'no_tlp' => $request->input('no_tlp'),
+            'alamat' => $request->input('alamat'),
+            'angkatan' => $request->input('angkatan'),
+            'prodi' => $request->input('prodi'),
+            'nama_ukm' => $namaFile,
+            'id_user' => Auth::user()->id,
+        ]);
+        }
+        // $user->save();
+
+        return redirect()->route('profile.index');
     }
 
     /**

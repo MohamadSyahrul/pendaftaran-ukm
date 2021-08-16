@@ -64,7 +64,11 @@
     </li>
     <li class="dropdown">
         <a href="#" data-toggle="dropdown" class="nav-link dropdown-toggle nav-link-lg nav-link-user">
+            @if(Auth::user()->profileUser  != null)
             <img alt="image" src="{{asset('img/'.Auth()->user()->profileUser->foto)}}" class="user-img-radious-style">
+            @else
+            <img alt="image" src="{{asset('assets/img/logo-poliwangi.png')}}" class="user-img-radious-style">
+            @endif
             <span class="d-sm-none d-lg-inline-block"></span>
         </a>
         <div class="dropdown-menu dropdown-menu-right pullDown">

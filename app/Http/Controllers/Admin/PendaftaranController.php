@@ -4,7 +4,8 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-
+use App\Models\anggota_ukm;
+use Auth;
 class PendaftaranController extends Controller
 {
     /**
@@ -14,7 +15,8 @@ class PendaftaranController extends Controller
      */
     public function index()
     {
-        return view('pages.admin.pendaftaran.pendaftaran');
+        $data = anggota_ukm::where('ukm_id', Auth::user()->desk_ukm->id)->get();  
+        return view('pages.admin.pendaftaran.pendaftaran',compact('data'));
     }
 
     /**
@@ -57,7 +59,8 @@ class PendaftaranController extends Controller
      */
     public function edit($id)
     {
-        //
+       $item = anggota_ukm::find($id);
+       return view('pages.admin.pendaftaran.edit',compact('item'));
     }
 
     /**
@@ -69,7 +72,11 @@ class PendaftaranController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+       anggota_ukm::where('id', $id)->update([
+            'devisi' => $request->input('devisi'),
+        ]);
+        return redirect()->route('pendaftaran.index');
+
     }
 
     /**
@@ -80,6 +87,8 @@ class PendaftaranController extends Controller
      */
     public function destroy($id)
     {
-        //
+       anggota_ukm::where('id', $id)->delete();
+        return redirect()->route('pendaftaran.index');
+       
     }
 }

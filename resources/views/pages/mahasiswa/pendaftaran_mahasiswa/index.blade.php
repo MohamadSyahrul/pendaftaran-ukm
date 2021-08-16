@@ -7,58 +7,69 @@ Profil {{ Auth::user()->name }}
     <link rel="stylesheet" href="{{asset('assets/bundles/datatables/DataTables-1.10.16/css/dataTables.bootstrap4.min.css')}}">
     @endpush
 @section('content')
+ @foreach($data as $item)
     <div class="section-body">
         <div class="row d-flex justify-content-center">
             <div class="col-12 col-sm-12 col-lg-8">
                 <div class="card author-box card-primary">
+                 
                     <div class="card-body">
                         <div class="author-box-left">
-                          @if(Auth()->user()->profileUser != null)
-                            <img alt="image" src="{{asset('img/'.Auth::user()->profileUser->foto)}}"
+                          @if($item->profile != null)
+                            <img alt="image" src="{{asset('img/'.$item->profile->foto)}}"
                                 class="rounded-circle author-box-picture">
 
                             <div class="clearfix"></div>
-                            <a href="{{ route('profile.edit', ['profile' => Auth::user()->profileUser->id] ) }}"
-                                class="btn btn-primary mt-3">Edit Profil</a>
+                            <a href="#"
+                                class="btn btn-primary mt-3">Sertifikat</a>
                                         
                         </div>
 
                         <div class="author-box-details">
                           <div class="author-box-name">
-                            <a href="#">{{ Auth::user()->name }}</a>
+                            <!-- <a href="#">{{ Auth::user()->name }}</a> -->
                           </div>
                           <div class="author-box-job">{{ Auth::user()->role }}</div>
                           <div class="author-box-description">
                             <table>
                               <tr>
                                 <th>Nama :</th>
-                                <td> {{ Auth::user()->profileUser->nama }}</td>
+                                <td> {{ $item->profile->nama }}</td>
                               </tr>
                               <tr>
                                 <th>NIM :</th>
-                                <td> {{ Auth::user()->profileUser->nim }}</td>
-                              </tr>
-                              <tr>
-                                <th>Email :</th>
-                                <td> {{ Auth::user()->email }}</td>
+                                <td> {{ $item->profile->nim }}</td>
                               </tr>
                               <tr>
                                 <th>Nomor Tlp : </th>
-                                <td> 0{{ Auth::user()->profileUser->no_tlp }}</td>
+                                <td> 0{{ $item->profile->no_tlp }}</td>
                               </tr>
                               <tr>
                                 <th>Alamat :</th>
-                                <td> {{ Auth::user()->profileUser->alamat }}</td>
+                                <td> {{ $item->profile->alamat }}</td>
                               </tr>
                               <tr>
                                 <th>Prodi :</th>
-                                <td> {{ Auth::user()->profileUser->prodi }}</td>
+                                <td> {{ $item->profile->prodi }}</td>
+                              </tr>
+                              <tr>
+                                <th>UKM :</th>
+                                <td> {{ $item->ukm->ukm }}</td>
+                              </tr>
+                              <tr>
+                                <th>Devisi :</th>
+                                @if($item == null)
+                                <td> - </td>
+                                @else
+                                <td> {{ $item->devisi }}</td>
+                                @endif
                               </tr>
                             </table>
                           </div>
                           <div class="w-100 d-sm-none"></div>
                         </div>
                     </div>
+
                    </div>
             </div>
         </div>
@@ -116,6 +127,7 @@ Profil {{ Auth::user()->name }}
           </div> 
         </div>
         @endif 
+         @endforeach
 @endsection
 @push('plugin-script')
 

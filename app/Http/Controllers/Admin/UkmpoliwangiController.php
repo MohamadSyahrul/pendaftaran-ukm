@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Ukm;
 use Illuminate\Http\Request;
+use Auth;
+use App\Models\ListUkm;
 
 class UkmpoliwangiController extends Controller
 {
@@ -15,8 +17,10 @@ class UkmpoliwangiController extends Controller
      */
     public function index()
     {
-        $ukm = Ukm::all();
-        return view('pages.admin.ukm-poliwangi',compact('ukm'));
+        $ukm = Ukm::where('ukm', Auth::user()->role)->get();
+        $list_ukm = ListUkm::where('nama_ukm', Auth::user()->role)->first();
+
+        return view('pages.admin.ukm-poliwangi',compact(['ukm','list_ukm']));
     }
 
     /**
@@ -85,7 +89,9 @@ class UkmpoliwangiController extends Controller
     public function edit($id)
     {
         $item = Ukm::find($id);
-        return view('pages.admin.ukm-edit',compact('item'));
+        $list_ukm = ListUkm::where('nama_ukm', Auth::user()->role)->first();
+        
+        return view('pages.admin.ukm-edit',compact(['item','list_ukm']));
     }
 
     /**
