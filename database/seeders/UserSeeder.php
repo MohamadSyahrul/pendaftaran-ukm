@@ -90,8 +90,8 @@ class UserSeeder extends Seeder
     	'role' => 'menwa'
     ]);
     DB::table('users')->insert([
-    	'username' => Str::random(10),
-    	'email' => Str::random(10).'@gmail.com',
+    	'username' => 'Str::random(10)',
+    	'email' => 'Str::random(10)'.'@gmail.com',
     	'password' => Hash::make('12345678'),
     	'role' => 'mahasiswa'
     ]);

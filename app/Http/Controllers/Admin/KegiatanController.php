@@ -4,8 +4,9 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Event;
+use App\Models\PendaftaranEvent;
 use Illuminate\Http\Request;
-
+use Auth;
 class KegiatanController extends Controller
 {
     /**
@@ -15,8 +16,9 @@ class KegiatanController extends Controller
      */
     public function index()
     {
-        $item = Event::all();
-        return view('pages.admin.kegiatan.index', compact('item'));
+        $item = Event::where('ukm_id', Auth::user()->desk_ukm->id)->get();
+   
+        return view('pages.admin.kegiatan.index', compact(['item']));
     }
 
     /**
@@ -28,7 +30,6 @@ class KegiatanController extends Controller
     {
         return view('pages.admin.kegiatan.create');
     }
-    
     /**
      * Store a newly created resource in storage.
      *
@@ -40,6 +41,7 @@ class KegiatanController extends Controller
         $event = new Event;
         $event->judul = $request->judul;
         $event->keterangan = $request->keterangan;
+        $event->ukm_id = Auth::user()->desk_ukm->id;
         if ($request->hasFile('gambar')) {
             $nm = $request->gambar;
             $namaFile = time() . rand(100, 999) . "." . $nm->getClientOriginalExtension();

@@ -14,6 +14,13 @@ class Event extends Model
     protected $fillable =[
         'judul',
         'keterangan',
-        'gambar'
+        'gambar',
+        'ukm_id'
     ];
+    public function ukm() {
+        return $this->belongsTo('App\Models\Ukm', 'ukm_id' , 'id');
+    }
+     public function pendaftaran_event() {
+        return $this->belongsTo('App\Models\PendaftaranEvent', 'id' , 'profile_id');
+    }
 }

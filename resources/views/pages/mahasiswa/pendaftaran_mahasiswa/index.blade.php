@@ -20,7 +20,7 @@ Profil {{ Auth::user()->name }}
                                 class="rounded-circle author-box-picture">
 
                             <div class="clearfix"></div>
-                            <a href="#"
+                            <a href="{{ route('recruitment.create')}}"
                                 class="btn btn-primary mt-3">Sertifikat</a>
                                         
                         </div>

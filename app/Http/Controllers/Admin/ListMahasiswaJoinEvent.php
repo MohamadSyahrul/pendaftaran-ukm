@@ -4,9 +4,9 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Models\anggota_ukm;
+use App\Models\PendaftaranEvent;
 use Auth;
-class PendaftaranController extends Controller
+class ListMahasiswaJoinEvent extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,8 +15,7 @@ class PendaftaranController extends Controller
      */
     public function index()
     {
-        $data = anggota_ukm::where('ukm_id', Auth::user()->desk_ukm->id)->get();  
-        return view('pages.admin.pendaftaran.pendaftaran',compact('data'));
+        //
     }
 
     /**
@@ -26,7 +25,7 @@ class PendaftaranController extends Controller
      */
     public function create()
     {
-        return view('pages.admin.pendaftaran.detail');
+        //
     }
 
     /**
@@ -48,6 +47,8 @@ class PendaftaranController extends Controller
      */
     public function show($id)
     {
+           $PendaftaranEvent = PendaftaranEvent::where('ukm_id', Auth::user()->desk_ukm->id)->where('event_id', $id)->get();
+        return view('pages.admin.kegiatan.list_daftar', compact(['PendaftaranEvent']));
     }
 
     /**
@@ -58,8 +59,7 @@ class PendaftaranController extends Controller
      */
     public function edit($id)
     {
-       $item = anggota_ukm::find($id);
-       return view('pages.admin.pendaftaran.edit',compact('item'));
+        //
     }
 
     /**
@@ -71,11 +71,7 @@ class PendaftaranController extends Controller
      */
     public function update(Request $request, $id)
     {
-       anggota_ukm::where('id', $id)->update([
-            'devisi' => $request->input('devisi'),
-        ]);
-        return redirect()->route('pendaftaran.index');
-
+        //
     }
 
     /**
@@ -86,8 +82,8 @@ class PendaftaranController extends Controller
      */
     public function destroy($id)
     {
-       anggota_ukm::where('id', $id)->delete();
-        return redirect()->route('pendaftaran.index');
-       
+        dd($id);
+         PendaftaranEvent::where('id', $id)->delete();
+      return redirect()->route('event.index');
     }
 }

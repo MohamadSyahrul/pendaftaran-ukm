@@ -4,7 +4,7 @@ Create Kegiatan
 @endsection
 @push('plugin-style')
 <link rel="stylesheet" href="{{asset('assets/bundles/chocolat/dist/css/chocolat.css')}}">
-@endpush
+@endpush 
 @section('content')
 <section class="section">
     <div class="section-body">

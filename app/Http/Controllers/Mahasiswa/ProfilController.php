@@ -47,33 +47,31 @@ class ProfilController extends Controller
         // $user->prodi = $request->prodi;
 
         if($request->hasFile('foto')) {
-            $nm = $request->input('foto');
+            $nm = $request->foto;
             $namaFile = time() . rand(100, 999) . "." . $nm->getClientOriginalExtension();
             // $user->foto = $namaFile;
             $nm->move(public_path() . '/img', $namaFile);
             ProfileUser::create([
-            'nama_ukm' => $request->input('ukm'),
             'nama' => $request->input('nama'),
             'nim' => $request->input('nim'),
             'no_tlp' => $request->input('no_tlp'),
             'alamat' => $request->input('alamat'),
             'angkatan' => $request->input('angkatan'),
             'prodi' => $request->input('prodi'),
-            'nama_ukm' => $namaFile,
+            'foto' => $namaFile,
             'id_user' => Auth::user()->id,
 
         ]);
         }else{
             $namaFile = 'default.png';
             ProfileUser::create([
-            'nama_ukm' => $request->input('ukm'),
             'nama' => $request->input('nama'),
             'nim' => $request->input('nim'),
             'no_tlp' => $request->input('no_tlp'),
             'alamat' => $request->input('alamat'),
             'angkatan' => $request->input('angkatan'),
             'prodi' => $request->input('prodi'),
-            'nama_ukm' => $namaFile,
+            'foto' => $namaFile,
             'id_user' => Auth::user()->id,
         ]);
         }

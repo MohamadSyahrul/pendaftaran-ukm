@@ -22,28 +22,29 @@ Kegiatan
                                 <a href="#" data-toggle="dropdown" class="btn btn-warning dropdown-toggle">Options</a>
                                 <div class="dropdown-menu">
                                     <a href="{{route('kegiatan.edit',$row->id)}}" class="dropdown-item has-icon"><i class="far fa-edit"></i> Edit</a>
-                                    <a href="#" class="dropdown-item has-icon"><i class="fas fa-sign-in-alt"></i>List Pendaftar</a>
+                                    <a href="{{ route('list_mahasiswa_join_event.show',$row->id) }}" class="dropdown-item has-icon"><i class="fas fa-sign-in-alt"></i>List Pendaftar</a>
                                     <form action="{{ route('kegiatan.destroy',$row->id) }}" method="post" class="d-inline" onsubmit="return confirm('Yakin hapus data ?')">
                                         @method('delete')
                                         @csrf
                                         <button type="submit" class="dropdown-item has-icon text-danger">
                                           <i class="fas fa-trash"></i>
-                                        Delete
-                                        </button>
-                                      </form>
+                                          Delete
+                                      </button>
+                                  </form>
 
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="card-body">
-                        <p>{{$row->keterangan}}</p>
-                        
-                    </div>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+                  <div class="card-body">
+                    <p>{{$row->keterangan}}</p>
+
                 </div>
-                @endforeach
             </div>
+            @endforeach
         </div>
     </div>
+</div>
 </section>
+
 @endsection

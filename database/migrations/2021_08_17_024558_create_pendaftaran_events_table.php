@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateTbPendaftaranEventTable extends Migration
+class CreatePendaftaranEventsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,11 @@ class CreateTbPendaftaranEventTable extends Migration
      */
     public function up()
     {
-        Schema::create('tb_pendaftaran_event', function (Blueprint $table) {
+        Schema::create('pendaftaran_events', function (Blueprint $table) {
             $table->id();
-            $table->bigInteger('NIM');
-            $table->string('nama');
-            $table->string('prodi');
+            $table->integer('ukm_id');
+            $table->integer('profile_id');
+            $table->integer('event_id');
             $table->timestamps();
         });
     }
@@ -29,6 +29,6 @@ class CreateTbPendaftaranEventTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('tb_pendaftaran_event');
+        Schema::dropIfExists('pendaftaran_events');
     }
 }

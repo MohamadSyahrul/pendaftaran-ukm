@@ -23,8 +23,30 @@ Kegiatan
                         <p>{{$row->keterangan}}</p>
                     </div>
                     <div class="card-footer">
-                        <a href="#"  class="btn btn-info">
-                            Daftar</a>
+                        @if($row->pendaftaran_event->ukm_id == $row->ukm->id && $row->pendaftaran_event->event_id == $row->id)
+                       <a href="#">
+                            <button type="submit"
+                               class="btn btn-primary btn-outline-primary mb-2 rounded">
+                                <i class="fas fa-add">
+                                   Telah Mendaftar
+                                </i>
+                            </button>
+                      </a>
+                        @else
+                         <form method="POST" action="{{ route('event.store')}}"
+                            >
+                            @csrf
+                            @method('POST')
+                            <input type="hidden" value="{{$row->ukm->id}}" class="form-control" name="ukm_id">
+                            <input type="hidden" value="{{$row->id}}" class="form-control" name="event_id">
+                            <button type="submit"
+                               class="btn btn-primary btn-outline-primary mb-2 rounded">
+                                <i class="fas fa-add">
+                                    Daftar
+                                </i>
+                            </button>
+                        </form>
+                        @endif
                     </div>
 
                 </div>

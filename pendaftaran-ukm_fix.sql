@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 16, 2021 at 08:12 PM
+-- Generation Time: Aug 17, 2021 at 07:17 AM
 -- Server version: 10.4.18-MariaDB
 -- PHP Version: 8.0.3
 
@@ -42,7 +42,8 @@ CREATE TABLE `anggota_ukms` (
 
 INSERT INTO `anggota_ukms` (`id`, `ukm_id`, `profile_id`, `devisi`, `created_at`, `updated_at`) VALUES
 (1, 1, 1, 'Tari Modern', '2021-08-16 09:57:01', '2021-08-16 09:57:01'),
-(2, 2, 1, 'perawat', '2021-08-16 10:16:34', '2021-08-16 11:05:24');
+(2, 2, 1, 'perawat', '2021-08-16 10:16:34', '2021-08-16 11:05:24'),
+(3, 1, 4, NULL, '2021-08-16 22:06:22', '2021-08-16 22:06:22');
 
 -- --------------------------------------------------------
 
@@ -113,12 +114,13 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (4, '2021_07_08_134527_create_tb_ukm_table', 1),
 (5, '2021_07_08_155548_create_tb_sertifikat_table', 1),
 (6, '2021_07_08_155621_create_tb_pendaftaran_ukm_table', 1),
-(7, '2021_07_08_155652_create_tb_pendaftaran_event_table', 1),
-(8, '2021_07_08_155703_create_tb_event_table', 1),
 (9, '2021_07_22_124557_create_profile_users_table', 1),
 (10, '2021_08_11_223301_add_judul_to_tb_event_table', 1),
 (12, '2021_08_16_085532_create_list_ukms_table', 2),
-(14, '2021_08_16_123934_create_anggota_ukms_table', 3);
+(14, '2021_08_16_123934_create_anggota_ukms_table', 3),
+(16, '2021_07_08_155652_create_tb_pendaftaran_event_table', 5),
+(17, '2021_08_17_024558_create_pendaftaran_events_table', 6),
+(18, '2021_07_08_155703_create_tb_event_table', 7);
 
 -- --------------------------------------------------------
 
@@ -131,6 +133,29 @@ CREATE TABLE `password_resets` (
   `token` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `pendaftaran_events`
+--
+
+CREATE TABLE `pendaftaran_events` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `ukm_id` int(11) NOT NULL,
+  `profile_id` int(11) NOT NULL,
+  `event_id` int(11) NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `pendaftaran_events`
+--
+
+INSERT INTO `pendaftaran_events` (`id`, `ukm_id`, `profile_id`, `event_id`, `created_at`, `updated_at`) VALUES
+(1, 1, 1, 1, '2021-08-16 20:42:42', '2021-08-16 20:42:42'),
+(2, 1, 4, 1, '2021-08-16 22:07:54', '2021-08-16 22:07:54');
 
 -- --------------------------------------------------------
 
@@ -157,7 +182,8 @@ CREATE TABLE `profile_users` (
 --
 
 INSERT INTO `profile_users` (`id`, `foto`, `nama`, `nim`, `no_tlp`, `alamat`, `angkatan`, `prodi`, `id_user`, `created_at`, `updated_at`) VALUES
-(1, '1629130198580.jpg', 'Sinta', 361855401098, 85473238594, 'Banyuwangi', '10', 'Teknik Informatika', 13, '2021-08-16 09:09:58', '2021-08-16 09:09:58');
+(1, '1629130198580.jpg', 'Sinta', 361855401098, 85473238594, 'Banyuwangi', '10', 'Teknik Informatika', 13, '2021-08-16 09:09:58', '2021-08-16 09:09:58'),
+(4, '1629176532123.jpg', 'Muhammad Nabil Tamami', 361755401147, 812345678, 'Banyuwangi', '10', 'Teknik Informatika', 15, '2021-08-16 22:02:12', '2021-08-16 22:02:12');
 
 -- --------------------------------------------------------
 
@@ -167,42 +193,20 @@ INSERT INTO `profile_users` (`id`, `foto`, `nama`, `nim`, `no_tlp`, `alamat`, `a
 
 CREATE TABLE `tb_event` (
   `id` bigint(20) UNSIGNED NOT NULL,
+  `judul` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `keterangan` text COLLATE utf8mb4_unicode_ci NOT NULL,
   `gambar` text COLLATE utf8mb4_unicode_ci NOT NULL,
-  `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL,
-  `judul` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `tb_pendaftaran_event`
---
-
-CREATE TABLE `tb_pendaftaran_event` (
-  `id` bigint(20) UNSIGNED NOT NULL,
-  `NIM` bigint(20) NOT NULL,
-  `nama` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `prodi` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `ukm_id` int(11) NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- --------------------------------------------------------
-
 --
--- Table structure for table `tb_pendaftaran_ukm`
+-- Dumping data for table `tb_event`
 --
 
-CREATE TABLE `tb_pendaftaran_ukm` (
-  `id` bigint(20) UNSIGNED NOT NULL,
-  `NIM` bigint(20) NOT NULL,
-  `nama` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `prodi` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+INSERT INTO `tb_event` (`id`, `judul`, `keterangan`, `gambar`, `ukm_id`, `created_at`, `updated_at`) VALUES
+(1, 'Pentas Seni Tari Tradisional Part 2', 'Pentas Seni Tari Tradisional yang menampilkan tari tradisional, tidak hanya tari dari daerah Banyuwangi, pada pentas seni juga menampilkan tarian dari daerah lain seperti Tari Piring yang berasal dari daerah Minangkabau', '1629169146819.jpeg', 1, '2021-08-16 19:59:06', '2021-08-16 20:01:37');
 
 -- --------------------------------------------------------
 
@@ -277,7 +281,8 @@ INSERT INTO `users` (`id`, `role`, `username`, `email`, `email_verified_at`, `pa
 (10, 'mapala', 'mapala', 'mapala@gmail.com', NULL, '$2y$10$y7za0XAdBH6CLkhbA/wRt.3ronry/sN7Qm9W9gExbHtuRHXELs8U.', NULL, NULL, NULL),
 (11, 'ksr', 'ksr', 'ksr@gmail.com', NULL, '$2y$10$guDl9TJ/7jP572TnWPB20eo.hCEaNKbm/scbp4qgvcxj7we06oJOS', NULL, NULL, NULL),
 (12, 'menwa', 'menwa', 'menwa@gmail.com', NULL, '$2y$10$cljsBsgjzwYrIDfhZELYQ.bEUGwl7pqchhD5znewf1na5XSMgTJ3m', NULL, NULL, NULL),
-(13, 'mahasiswa', 'mahasiswa', 'mahasiswa@gmail.com', NULL, '$2y$10$AutzFb26ZpfBhLR60vvnvO5xDMiJgLBYSpAj4M4CLR1wetBOg78kC', NULL, NULL, NULL);
+(13, 'mahasiswa', 'mahasiswa', 'mahasiswa@gmail.com', NULL, '$2y$10$AutzFb26ZpfBhLR60vvnvO5xDMiJgLBYSpAj4M4CLR1wetBOg78kC', NULL, NULL, NULL),
+(15, 'mahasiswa', 'nabil', 'nabil@gmail.com', NULL, '$2y$10$n42omE/H3hsz3mo0tGxOs.y8d1HtVjirG4frn6l61FL30Jk0BhnAm', NULL, NULL, NULL);
 
 --
 -- Indexes for dumped tables
@@ -315,6 +320,12 @@ ALTER TABLE `password_resets`
   ADD KEY `password_resets_email_index` (`email`);
 
 --
+-- Indexes for table `pendaftaran_events`
+--
+ALTER TABLE `pendaftaran_events`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `profile_users`
 --
 ALTER TABLE `profile_users`
@@ -325,18 +336,6 @@ ALTER TABLE `profile_users`
 -- Indexes for table `tb_event`
 --
 ALTER TABLE `tb_event`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `tb_pendaftaran_event`
---
-ALTER TABLE `tb_pendaftaran_event`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `tb_pendaftaran_ukm`
---
-ALTER TABLE `tb_pendaftaran_ukm`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -366,7 +365,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `anggota_ukms`
 --
 ALTER TABLE `anggota_ukms`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `failed_jobs`
@@ -384,31 +383,25 @@ ALTER TABLE `list_ukms`
 -- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+
+--
+-- AUTO_INCREMENT for table `pendaftaran_events`
+--
+ALTER TABLE `pendaftaran_events`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `profile_users`
 --
 ALTER TABLE `profile_users`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `tb_event`
 --
 ALTER TABLE `tb_event`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT for table `tb_pendaftaran_event`
---
-ALTER TABLE `tb_pendaftaran_event`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT for table `tb_pendaftaran_ukm`
---
-ALTER TABLE `tb_pendaftaran_ukm`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `tb_sertifikat`
@@ -426,7 +419,7 @@ ALTER TABLE `tb_ukm`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- Constraints for dumped tables

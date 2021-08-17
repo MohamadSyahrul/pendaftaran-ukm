@@ -17,5 +17,8 @@ class Ukm extends Model
         'foto1',
         'logo',
     ];
+        public function event() {
+        return $this->belongsTo('App\Models\Event', 'id' , 'ukm_id');
+    }
     
 }

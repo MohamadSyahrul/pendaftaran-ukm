@@ -15,8 +15,17 @@ class RecruitmentController extends Controller
      */
     public function index()
     {
-        $data = anggota_ukm::all();
+        if (Auth::user()->profileUser != null) {
+        
+        $data = anggota_ukm::where('profile_id', Auth::user()->profileUser->id)->get();
+
          return view('pages.mahasiswa.pendaftaran_mahasiswa.index',compact('data'));
+            
+        }
+        else{
+
+         return view('pages.mahasiswa.pendaftaran_mahasiswa.404_data_profile');
+        }
          
     }
 
@@ -27,7 +36,8 @@ class RecruitmentController extends Controller
      */
     public function create()
     {
-        //
+         return view('pages.mahasiswa.pendaftaran_mahasiswa.sertifikat');
+        
     }
 
     /**
@@ -52,9 +62,9 @@ class RecruitmentController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show()
     {
-        //
+        
     }
 
     /**
@@ -90,4 +100,6 @@ class RecruitmentController extends Controller
     {
         //
     }
+
+
 }

@@ -3,9 +3,10 @@
 namespace App\Http\Controllers\Mahasiswa;
 
 use App\Models\Event;
+use App\Models\PendaftaranEvent;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-
+use Auth;
 class EventController extends Controller
 {
     /**
@@ -16,7 +17,8 @@ class EventController extends Controller
     public function index()
     {
         $item = Event::all();
-        return view('pages.mahasiswa.kegiatan', compact('item'));
+        // $PendaftaranEvent = PendaftaranEvent::all();
+        return view('pages.mahasiswa.kegiatan', compact(['item']));
     }
 
     /**
@@ -37,7 +39,13 @@ class EventController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // dd($request->input('event_id'));
+       PendaftaranEvent::create([
+            'ukm_id' => $request->input('ukm_id'),
+            'event_id' => $request->input('event_id'),
+            'profile_id' => Auth::user()->profileUser->id,
+        ]);
+        return redirect()->route('event.index');
     }
 
     /**

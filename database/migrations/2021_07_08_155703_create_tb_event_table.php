@@ -15,8 +15,10 @@ class CreateTbEventTable extends Migration
     {
         Schema::create('tb_event', function (Blueprint $table) {
             $table->id();
+            $table->string('judul');
             $table->text('keterangan');
             $table->text('gambar');
+            $table->integer('ukm_id');
             $table->timestamps();
         });
     }

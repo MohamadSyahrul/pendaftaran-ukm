@@ -41,6 +41,7 @@ Route::middleware([IsUKM::class])
     Route::resource('ukm-poliwangi', UkmpoliwangiController::class);
     Route::resource('pendaftaran', '\App\Http\Controllers\Admin\PendaftaranController');
     Route::resource('kegiatan', '\App\Http\Controllers\Admin\KegiatanController');
+    Route::resource('list_mahasiswa_join_event', '\App\Http\Controllers\Admin\ListMahasiswaJoinEvent');
     
 });
 Route::middleware([IsAdmin::class])
