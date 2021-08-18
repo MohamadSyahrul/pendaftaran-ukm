@@ -21,6 +21,7 @@ class Event extends Model
         return $this->belongsTo('App\Models\Ukm', 'ukm_id' , 'id');
     }
      public function pendaftaran_event() {
-        return $this->belongsTo('App\Models\PendaftaranEvent', 'id' , 'profile_id');
+        return $this->belongsTo('App\Models\PendaftaranEvent', 'id' , 'event_id');
     }
+
 }

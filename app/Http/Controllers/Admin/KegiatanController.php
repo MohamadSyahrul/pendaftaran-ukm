@@ -16,9 +16,17 @@ class KegiatanController extends Controller
      */
     public function index()
     {
+         if(Auth::user()->desk_ukm != null) {
         $item = Event::where('ukm_id', Auth::user()->desk_ukm->id)->get();
-   
+    
         return view('pages.admin.kegiatan.index', compact(['item']));
+        }
+        else{
+             $item = Event::where('ukm_id', Auth::user()->desk_ukm)->get();
+    
+        return view('pages.admin.kegiatan.index', compact(['item']));
+        }
+
     }
 
     /**

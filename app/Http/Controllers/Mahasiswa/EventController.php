@@ -16,8 +16,12 @@ class EventController extends Controller
      */
     public function index()
     {
-        $item = Event::all();
-        // $PendaftaranEvent = PendaftaranEvent::all();
+        $item = Event::with(['pendaftaran_event' => function ($q) {
+                $q->where('profile_id', Auth::user()->profileUser->id);
+            }
+            ])->get();
+        // $PendaftaranEvent = PendaftaranEvent::where('profile_id', Auth::user()->profileUser->id)->get();
+        
         return view('pages.mahasiswa.kegiatan', compact(['item']));
     }
 
@@ -39,7 +43,7 @@ class EventController extends Controller
      */
     public function store(Request $request)
     {
-        // dd($request->input('event_id'));
+        // dd(Auth::user()->profileUser->id);
        PendaftaranEvent::create([
             'ukm_id' => $request->input('ukm_id'),
             'event_id' => $request->input('event_id'),

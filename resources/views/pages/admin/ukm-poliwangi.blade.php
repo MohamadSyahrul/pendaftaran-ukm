@@ -12,12 +12,12 @@ UKM POLIWANGI
 <section class="section">
     <div class="section-body">
         <div class="row">
-            @if($ukm == null)
+            @if($item == null)
             <button type="button" class="btn btn-outline-primary mb-2" data-toggle="modal"
                 data-target="#TambahData">Tambah
                 Data</button>
             @else
-            @foreach ($ukm as $item)
+
 
             <a href="{{route('ukm-poliwangi.edit',$item->id)}}">
             <button type="button" class="btn btn-outline-primary mb-2">Ubah
@@ -63,7 +63,6 @@ UKM POLIWANGI
                         </div>
                     </div>
                 </div>
-                @endforeach
                 @endif
         </div>
     </div>

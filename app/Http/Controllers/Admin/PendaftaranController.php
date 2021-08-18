@@ -15,8 +15,14 @@ class PendaftaranController extends Controller
      */
     public function index()
     {
+        if(Auth::user()->desk_ukm != null) {
         $data = anggota_ukm::where('ukm_id', Auth::user()->desk_ukm->id)->get();  
-        return view('pages.admin.pendaftaran.pendaftaran',compact('data'));
+        return view('pages.admin.pendaftaran.pendaftaran',compact('data'));   
+        }
+        else{
+             $data = anggota_ukm::where('ukm_id', Auth::user()->desk_ukm)->get();  
+        return view('pages.admin.pendaftaran.pendaftaran',compact('data'));  
+        }
     }
 
     /**

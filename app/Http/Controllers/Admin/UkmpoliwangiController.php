@@ -17,10 +17,13 @@ class UkmpoliwangiController extends Controller
      */
     public function index()
     {
-        $ukm = Ukm::where('ukm', Auth::user()->role)->get();
+        $ukm = Ukm::where('ukm', Auth::user()->role)->first();
         $list_ukm = ListUkm::where('nama_ukm', Auth::user()->role)->first();
-
-        return view('pages.admin.ukm-poliwangi',compact(['ukm','list_ukm']));
+        // dd($ukm);
+        return view('pages.admin.ukm-poliwangi',[
+            'item' => $ukm,
+            'list_ukm' => $list_ukm,
+        ]);
     }
 
     /**

@@ -15,7 +15,7 @@ Kegiatan
                             <a href="{{route('event.show', $row->id)}}" class="btn btn-primary">
                                 View
                             </a>
-                            
+                             
 
                         </div>
                     </div>
@@ -23,7 +23,11 @@ Kegiatan
                         <p>{{$row->keterangan}}</p>
                     </div>
                     <div class="card-footer">
-                        @if($row->pendaftaran_event->ukm_id == $row->ukm->id && $row->pendaftaran_event->event_id == $row->id)
+                       
+                
+                     @if($row->pendaftaran_event != null )
+                    @if($row->pendaftaran_event->ukm_id == $row->ukm->id && $row->pendaftaran_event->event_id == $row->id 
+                        )
                        <a href="#">
                             <button type="submit"
                                class="btn btn-primary btn-outline-primary mb-2 rounded">
@@ -32,6 +36,23 @@ Kegiatan
                                 </i>
                             </button>
                       </a>
+                      @else
+                           <form method="POST" action="{{ route('event.store')}}"
+                            >
+                            @csrf
+                            @method('POST')
+                            <input type="hidden" value="{{$row->ukm->id}}" class="form-control" name="ukm_id">
+                            <input type="hidden" value="{{$row->id}}" class="form-control" name="event_id">
+                            <button type="submit"
+                               class="btn btn-primary btn-outline-primary mb-2 rounded">
+                                <i class="fas fa-add">
+                                    Daftar cok {{ $row->pendaftaran_event->ukm_id }} == {{ $row->ukm->id }}  
+                                    {{ $row->pendaftaran_event->event_id }} == {{ $row->id }}
+                                     {{ $row->pendaftaran_event->profile_id }} == {{ Auth::user()->profileUser->id }}
+                                </i>
+                            </button>
+                        </form>
+                      @endif
                         @else
                          <form method="POST" action="{{ route('event.store')}}"
                             >
@@ -42,14 +63,16 @@ Kegiatan
                             <button type="submit"
                                class="btn btn-primary btn-outline-primary mb-2 rounded">
                                 <i class="fas fa-add">
-                                    Daftar
+                                    Daftar 
                                 </i>
                             </button>
                         </form>
+                         
+                        
                         @endif
-                    </div>
-
+                            </div>
                 </div>
+                       
                 @endforeach
             </div>
         </div>
