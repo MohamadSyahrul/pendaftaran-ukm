@@ -40,7 +40,13 @@ class ManagementUserController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        User::create([
+        'email' => $request->email,
+        'password' => Hash::make($request->password),
+        'role' => $request->name,
+        'username' => $request->name,
+       ]);
+        return redirect()->route('management-user.index');
     }
 
     /**

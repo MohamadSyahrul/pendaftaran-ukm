@@ -1,6 +1,6 @@
 @extends('layouts.master')
 @section('title')
-Pendaftaran
+Manajemen User
 @endsection
 
     @push('plugin-style')
@@ -16,9 +16,9 @@ Pendaftaran
                 <div class="card">
                     <div class="card-header">
                         <h4>Manajemen User UKM</h4>
-                          <!-- <button type="button" class="btn btn-outline-primary mb-2" data-toggle="modal"
+                          <button type="button" class="btn btn-outline-primary mb-2" data-toggle="modal"
                 data-target="#TambahData">Tambah
-                Data</button> -->
+                Data</button>
                     </div>
                     <div class="card-body">
                         <div class="table-responsive">
@@ -91,7 +91,54 @@ Pendaftaran
         </div>
     </div>
 </section>
+<div class="modal fade" id="TambahData" tabindex="-1" role="dialog" aria-labelledby="formModal" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="formModal">Tambah Data</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                    <form class="form form-horizontal" action="{{route('management-user.store')}}"
+                        method="post" enctype="multipart/form-data">
+                        @csrf
+                        <div class="card-body">
+                        <div class="form-group">
+                            <label>Nama UKM</label>
+                            
 
+                                <input type="text" value="" class="form-control" name="name">
+                               
+                            
+                        </div>
+                        <div class="form-group">
+                            <label>Email</label>
+                            
+
+                                <input type="text" value="" class="form-control" name="email">
+                               
+                            
+                        </div>
+                        <div class="form-group">
+                            <label>Password</label>
+                            
+
+                                <input type="password" class="form-control" name="password">
+                               
+                            
+                        </div>
+                    </div>
+                        <div class="card-footer text-right">
+                            <button type="reset" class="btn btn-light mr-3">Cancel</button>
+                            <button type="submit" class="btn btn-primary">Tambah</button>
+                        </div>
+                    </form>
+            </div>
+        </div>
+    </div>
+</div>
 <script type="text/javascript">
         function editData(id) {
             console.log(id);

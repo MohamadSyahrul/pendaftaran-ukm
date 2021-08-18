@@ -12,6 +12,7 @@ UKM POLIWANGI
 <section class="section">
     <div class="section-body">
         <div class="row">
+            @if($list_ukm != null)           
             @if($item == null)
             <button type="button" class="btn btn-outline-primary mb-2" data-toggle="modal"
                 data-target="#TambahData">Tambah
@@ -67,6 +68,7 @@ UKM POLIWANGI
         </div>
     </div>
 </section>
+
 <div class="modal fade" id="TambahData" tabindex="-1" role="dialog" aria-labelledby="formModal" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
@@ -97,7 +99,7 @@ UKM POLIWANGI
                                 <div class="input-group-text">
                                     <i class="fas fa-align-center"></i>
                                 </div>
-                            </div>                
+                            </div>           
                             <select name="ukm" class="form-control form-control-sm mb-3">
                                 <option value="{{$list_ukm->nama_ukm}}">
                                   {{$list_ukm->nama_ukm}}
@@ -140,7 +142,12 @@ UKM POLIWANGI
         </div>
     </div>
 </div>
-
+            @else
+                  <div class="alert alert-danger alert-block">
+          <strong>Data UKM Belum Ada, Mohon Konfirmasi Ke ADMIN untuk ditambahkan</strong>
+      </div>
+            
+            @endif
 
 @endsection
 
