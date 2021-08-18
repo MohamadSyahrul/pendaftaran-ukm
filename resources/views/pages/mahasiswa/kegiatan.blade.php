@@ -7,6 +7,8 @@ Kegiatan
     <div class="section-body">
         <div class="row justify-content-center">
             <div class="col-12 col-md-6 col-lg-10">
+@include('layouts.message-flash')
+
                 @foreach ($item as $row)
                 <div class="card card-primary">
                     <div class="card-header">
@@ -46,9 +48,7 @@ Kegiatan
                             <button type="submit"
                                class="btn btn-primary btn-outline-primary mb-2 rounded">
                                 <i class="fas fa-add">
-                                    Daftar cok {{ $row->pendaftaran_event->ukm_id }} == {{ $row->ukm->id }}  
-                                    {{ $row->pendaftaran_event->event_id }} == {{ $row->id }}
-                                     {{ $row->pendaftaran_event->profile_id }} == {{ Auth::user()->profileUser->id }}
+                                    Daftar
                                 </i>
                             </button>
                         </form>

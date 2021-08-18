@@ -49,7 +49,7 @@ class EventController extends Controller
             'event_id' => $request->input('event_id'),
             'profile_id' => Auth::user()->profileUser->id,
         ]);
-        return redirect()->route('event.index');
+        return redirect()->route('event.index')->with(['success' => 'Berhasil Mendaftar']);
     }
 
     /**

@@ -52,7 +52,7 @@ class RecruitmentController extends Controller
             'ukm_id' => $request->input('ukm_id'),
             'profile_id' => Auth::user()->profileUser->id,
         ]);
-        return redirect()->route('recruitment.index');
+        return redirect()->route('recruitment.index')->with(['success' => 'Berhasil Mendaftar']);
 
     }
 

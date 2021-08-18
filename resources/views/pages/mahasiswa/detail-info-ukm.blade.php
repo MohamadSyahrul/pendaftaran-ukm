@@ -12,7 +12,7 @@ UKM POLIWANGI
 <section class="section">
     <div class="section-body">
         <div class="row">
-
+@include('layouts.message-flash')
             @foreach ($ukm as $item)
             <div class="col-12 col-md-12 col-lg-12">
                 <div class="card">

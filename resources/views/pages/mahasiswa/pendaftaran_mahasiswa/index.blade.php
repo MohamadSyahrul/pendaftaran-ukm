@@ -7,6 +7,8 @@ Profil {{ Auth::user()->name }}
     <link rel="stylesheet" href="{{asset('assets/bundles/datatables/DataTables-1.10.16/css/dataTables.bootstrap4.min.css')}}">
     @endpush
 @section('content')
+@include('layouts.message-flash')
+
  @foreach($data as $item)
     <div class="section-body">
         <div class="row d-flex justify-content-center">
