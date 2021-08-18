@@ -17,7 +17,7 @@ class CreateAnggotaUkmsTable extends Migration
             $table->id();
             $table->integer('ukm_id');
             $table->integer('profile_id');
-            $table->string('devisi')->nullable();
+            $table->string('status')->default('Belum Terdaftar');
             $table->timestamps();
         });
     }

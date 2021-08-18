@@ -6,9 +6,11 @@ use App\Http\Middleware\IsMahasiswa;
 use App\Http\Middleware\IsUKM;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\ChangePasswordController;
 use App\Http\Controllers\Mahasiswa\EventController;
 use App\Http\Controllers\Admin\UkmpoliwangiController;
 use App\Http\Controllers\SuperAdmin\ListUKMController;
+use App\Http\Controllers\SuperAdmin\ManagementUserController;
 use App\Http\Controllers\Mahasiswa\ProfilController;
 use App\Http\Controllers\Mahasiswa\UkmpoliwangiController as MahasiswaUkmpoliwangiController;
 
@@ -28,6 +30,7 @@ Route::get('/', function () {
 });
 
 Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+Route::resource('/change_password', ChangePasswordController::class);
 
 Route::middleware([IsUKM::class])
 ->prefix('admin')
@@ -55,6 +58,7 @@ Route::middleware([IsAdmin::class])
     //     return view('pages.edit-profil');
     // });    
     Route::resource('list-ukm', ListUKMController::class);
+    Route::resource('management-user', ManagementUserController::class);
     // Route::resource('list-ukm', ListUKMController::class);
     // Route::resource('pendaftaran', '\App\Http\Controllers\Admin\PendaftaranController');
     // Route::resource('kegiatan', '\App\Http\Controllers\Admin\KegiatanController');

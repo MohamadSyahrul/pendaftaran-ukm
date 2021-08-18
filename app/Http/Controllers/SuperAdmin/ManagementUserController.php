@@ -1,12 +1,13 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers\SuperAdmin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Models\anggota_ukm;
-use Auth;
-class PendaftaranController extends Controller
+use App\Models\User;
+use Illuminate\Support\Facades\Hash;
+
+class ManagementUserController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,14 +16,10 @@ class PendaftaranController extends Controller
      */
     public function index()
     {
-        if(Auth::user()->desk_ukm != null) {
-        $data = anggota_ukm::where('ukm_id', Auth::user()->desk_ukm->id)->get();  
-        return view('pages.admin.pendaftaran.pendaftaran',compact('data'));   
-        }
-        else{
-             $data = anggota_ukm::where('ukm_id', Auth::user()->desk_ukm)->get();  
-        return view('pages.admin.pendaftaran.pendaftaran',compact('data'));  
-        }
+        
+        $item = User::where('role', '!=' , 'admin')->where('role', '!=' , 'mahasiswa')->get();
+        return view('pages.super_admin.user_ukm.management-user', compact(['item']));
+
     }
 
     /**
@@ -32,7 +29,7 @@ class PendaftaranController extends Controller
      */
     public function create()
     {
-        return view('pages.admin.pendaftaran.detail');
+        //
     }
 
     /**
@@ -54,10 +51,7 @@ class PendaftaranController extends Controller
      */
     public function show($id)
     {
-        anggota_ukm::where('id', $id)->update([
-            'status' => 'Terdaftar',
-        ]);
-        return redirect()->route('pendaftaran.index');
+        //
     }
 
     /**
@@ -68,8 +62,8 @@ class PendaftaranController extends Controller
      */
     public function edit($id)
     {
-       $item = anggota_ukm::find($id);
-       return view('pages.admin.pendaftaran.edit',compact('item'));
+         $item = User::where('id', $id)->first();
+        return view('pages.super_admin.user_ukm.change_user_ukm', compact(['item']));
     }
 
     /**
@@ -81,10 +75,16 @@ class PendaftaranController extends Controller
      */
     public function update(Request $request, $id)
     {
-       anggota_ukm::where('id', $id)->update([
-            'devisi' => $request->input('devisi'),
-        ]);
-        return redirect()->route('pendaftaran.index');
+        // $nm = $request->logo;
+        // $namaFile = 'logo_super_admin.jpg'; 
+        // $nm->move(public_path().'/img/super_admin/',$namaFile);
+
+        // dd($request->password);
+       User::where('id', $id)->update([
+        'email' => $request->email,
+        'password' => Hash::make($request->password),
+       ]);
+        return redirect()->route('management-user.index');
 
     }
 
@@ -96,8 +96,8 @@ class PendaftaranController extends Controller
      */
     public function destroy($id)
     {
-       anggota_ukm::where('id', $id)->delete();
-        return redirect()->route('pendaftaran.index');
-       
+        User::where('id', $id)->delete();
+        return redirect()->route('management-user.index');
+
     }
 }

@@ -13,9 +13,9 @@
       <li class="dropdown {{ request()->routeIs('list-ukm.index') ? 'active' : '' }}">
         <a href="{{route('list-ukm.index')}}" class="nav-link"><i data-feather="archive"></i><span>List UKM Poliwangi</span></a>
       </li>
-      <!-- <li class="dropdown {{ request()->routeIs('pendaftaran.index') ? 'active' : '' }}">
-        <a href="{{route('pendaftaran.index')}}" class="nav-link"><i data-feather="user-plus"></i><span>Pendaftaran</span></a>
-      </li> -->
+      <li class="dropdown {{ request()->routeIs('management-user.index') ? 'active' : '' }}">
+        <a href="{{route('management-user.index')}}" class="nav-link"><i data-feather="user-plus"></i><span>Manajemen User</span></a>
+      </li>
      <!--  <li class="dropdown {{ request()->routeIs('kegiatan.index') ? 'active' : '' }}">
         <a href="{{route('kegiatan.index')}}" class="nav-link"><i data-feather="trending-up"></i><span>Kegiatan</span></a>
       </li> -->

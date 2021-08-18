@@ -18,6 +18,12 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
+           DB::table('users')->insert([
+        'username' => 'admin',
+        'email' => 'admin'.'@gmail.com',
+        'password' => Hash::make('12345678'),
+        'role' => 'admin'
+    ]);
         // \App\Models\User::factory(10)->create();
     //         DB::table('users')->insert([
     //         'username' => 'admin',
@@ -38,5 +44,5 @@ class DatabaseSeeder extends Seeder
     //         'role' => 'mahasiswa'
     //     ]);
 
-    // }
+    }
 }

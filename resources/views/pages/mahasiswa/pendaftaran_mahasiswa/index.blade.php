@@ -57,11 +57,12 @@ Profil {{ Auth::user()->name }}
                                 <td> {{ $item->ukm->ukm }}</td>
                               </tr>
                               <tr>
-                                <th>Devisi :</th>
+                                <th>Status :</th>
                                 @if($item == null)
                                 <td> - </td>
                                 @else
-                                <td> {{ $item->devisi }}</td>
+                                <td><a href="#" disabled
+                                class="btn btn-primary mt-1 rounded">{{ $item->status }}</a></td>
                                 @endif
                               </tr>
                             </table>

@@ -64,8 +64,11 @@
     </li>
     <li class="dropdown">
         <a href="#" data-toggle="dropdown" class="nav-link dropdown-toggle nav-link-lg nav-link-user">
-            @if(Auth::user()->profileUser  != null)
+            @if(Auth::user()->profileUser  != null && Auth::user()->role == 'mahasiswa')
             <img alt="image" src="{{asset('img/'.Auth()->user()->profileUser->foto)}}" class="user-img-radious-style">
+            @elseif(Auth::user()->role != 'mahasiswa' && Auth::user()->role != 'admin')
+            <img alt="image" src="{{asset('img/'.Auth()->user()->desk_ukm->logo)}}" class="user-img-radious-style">            @elseif(Auth::user()->role == 'admin')
+            <img alt="image" src="{{asset('/img/super_admin/logo_super_admin.jpg')}}" class="user-img-radious-style">
             @else
             <img alt="image" src="{{asset('assets/img/logo-poliwangi.png')}}" class="user-img-radious-style">
             @endif
@@ -75,6 +78,16 @@
             <div class="dropdown-title">{{ Auth::user()->username }}</div>
             @if(Auth::user()->role == 'mahasiswa')
             <a href="{{route('profile.index')}}" class="dropdown-item has-icon"> <i class="far
+                    fa-user"></i> Profile
+            </a>
+            @endif
+            @if(Auth::user()->role == 'admin')
+            <a href="{{route('change_password.index')}}" class="dropdown-item has-icon"> <i class="far
+                    fa-user"></i> Profile
+            </a>
+            @endif
+            @if(Auth::user()->role != 'mahasiswa' && Auth::user()->role != 'admin')
+            <a href="{{route('change_password.index')}}" class="dropdown-item has-icon"> <i class="far
                     fa-user"></i> Profile
             </a>
             @endif

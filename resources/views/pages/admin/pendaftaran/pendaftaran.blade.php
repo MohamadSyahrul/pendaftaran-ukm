@@ -30,7 +30,7 @@ Pendaftaran
                                         <th>Foto</th>
                                         <th>Jurusan</th>
                                         <th>UKM</th>
-                                        <th>Devisi</th>
+                                        <th>Status</th>
                                         <th>Action</th>
                                     </tr>
                                 </thead>
@@ -50,10 +50,13 @@ Pendaftaran
                                         </td>
                                         <td>{{$item->profile->prodi}}</td>
                                         <td>{{ $item->ukm->ukm }}</td>
-                                        <td>{{ $item->devisi }}</td>
+                                        @if($item->status != "Terdaftar")
+                                       <td><button type="submit" class="btn btn-outline-primary mb-2"> <a href="{{route('pendaftaran.show',$item->id)}}" > {{$item->status}}</a> </button></td>
                                         <td>
-                                           <a href="{{route('pendaftaran.edit',$item->id)}}" class="dropdown-item has-icon"><i
-                                    class="far fa-edit"></i> Edit</a>
+                                         @else
+                                        <td>{{$item->status}}</td>
+                                        <td>
+                                         @endif
                                     
                                     <form action="{{ route('pendaftaran.destroy',$item->id) }}" method="post"
                                         class="d-inline" onsubmit="return confirm('Yakin hapus data ?')">
