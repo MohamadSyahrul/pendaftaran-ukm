@@ -81,7 +81,7 @@
                     fa-user"></i> Profile
             </a>
             <a href="{{route('change_password.index')}}" class="dropdown-item has-icon"> <i class="far
-                    fa-lock"></i> Change Password
+                    fa-user"></i> Change Password
             </a>
             @endif
             @if(Auth::user()->role == 'admin')

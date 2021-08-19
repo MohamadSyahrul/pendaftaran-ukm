@@ -54,7 +54,7 @@ Pendaftaran
                                        <td><button type="submit" class="btn btn-outline-primary mb-2"> <a href="{{route('pendaftaran.show',$item->id)}}" > {{$item->status}}</a> </button></td>
                                         <td>
                                          @else
-                                        <td>{{$item->status}}</td>
+                                         <td><button type="submit" class="btn btn-outline-primary mb-2">{{$item->status}}</button></td>
                                         <td>
                                          @endif
                                     
