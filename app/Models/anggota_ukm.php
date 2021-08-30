@@ -13,14 +13,21 @@ class anggota_ukm extends Model
 	protected $table = "anggota_ukms";
 	protected $primaryKey = 'id';
 	protected $fillable = [
-		'ukm_id',
-		'profile_id',
-		'devisi',
+	     'foto',
+        'nama',
+        'nim',
+        'no_tlp',
+        'alamat',
+        'angkatan',
+        'prodi',
+        'id_user',
+        'ukm_id',
+        'status'
 	];
 	public function ukm() {
 		return $this->belongsTo('App\Models\Ukm', 'ukm_id' , 'id');
 	}
-	public function profile() {
-		return $this->belongsTo('App\Models\ProfileUser', 'profile_id' , 'id');
-	}
+	// public function profile() {
+	// 	return $this->belongsTo('App\Models\ProfileUser', 'profile_id' , 'id');
+	// }
 }

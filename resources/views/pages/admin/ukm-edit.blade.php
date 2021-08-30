@@ -66,7 +66,7 @@ Edit UKM
                     </div>
                         <div class="card-footer text-right">
                             <button type="reset" class="btn btn-light mr-3">Cancel</button>
-                            <button type="submit" class="btn btn-primary">Tambah</button>
+                            <button type="submit" class="btn btn-primary">Submit</button>
                         </div>
                     </form>
                 </div>

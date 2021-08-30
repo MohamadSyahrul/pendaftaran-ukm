@@ -14,10 +14,14 @@ Pendaftaran
             <div class="col-12">
                 <div class="card">
                     <div class="card-header">
-                        <h4>Daftar Pendaftar</h4>
+<!--                         <h4>Pendaftar     : {{  $data_count }}</h4>
+                        <h4>Anggota Yang Telah Diterima     : {{  $data_count_accepted }}</h4> -->
                         <!-- <a href="#" class="btn btn-primary">Cetak</a> -->
                     </div>
                     <div class="card-body">
+                        <p class="p-0 m-0 text-center">Pendaftar     : {{  $data_count }}</p>
+                        <p class="p-0 m-0 text-center">Anggota Yang Telah Diterima     : {{  $data_count_accepted }}</p>
+
                         <div class="table-responsive">
                             <table class="table table-striped" id="table-1">
                                 <thead>
@@ -31,34 +35,36 @@ Pendaftaran
                                         <th>Jurusan</th>
                                         <th>UKM</th>
                                         <th>Status</th>
-                                        <th>Action</th>
+                                        <!-- <th>Action</th> -->
                                     </tr>
                                 </thead>
                                 <tbody>
                                     @foreach($data as $index => $item)
                                     <tr>
                                         <td>
-                                            1
+                                            {{$index+1}}
                                         </td>
-                                        <td> {{$item->profile->nim}} </td>
+                                        <td> {{$item->nim}} </td>
                                         <td>
-                                            {{$item->profile->nama}}
+                                            {{$item->nama}}
                                         </td>
                                         <td>
-                                            <img alt="image" src="{{asset('img/'.$item->profile->foto)}}"
+                                            <img alt="image" src="{{asset('img/'.$item->foto)}}"
                                             class="rounded-circle author-box-picture" width="35px">
                                         </td>
-                                        <td>{{$item->profile->prodi}}</td>
+                                        <td>{{$item->prodi}}</td>
                                         <td>{{ $item->ukm->ukm }}</td>
-                                        @if($item->status != "Terdaftar")
-                                       <td><button type="submit" class="btn btn-outline-primary mb-2"> <a href="{{route('pendaftaran.show',$item->id)}}" > {{$item->status}}</a> </button></td>
+                                        @if($item->status != "Diterima")
+                                       <td><button type="submit" class="btn btn-outline-primary mb-2"> <a href="{{route('pendaftaran.show',$item->id)}}" > TERIMA </a> </button></td>
                                         <td>
                                          @else
-                                         <td><button type="submit" class="btn btn-outline-primary mb-2">{{$item->status}}</button></td>
+                                         <td><button type="submit" class="btn btn-outline-primary mb-2">
+                                             <i data-feather="check"></i>
+                                         </button></td>
                                         <td>
                                          @endif
                                     
-                                    <form action="{{ route('pendaftaran.destroy',$item->id) }}" method="post"
+                                  <!--   <form action="{{ route('pendaftaran.destroy',$item->id) }}" method="post"
                                         class="d-inline" onsubmit="return confirm('Yakin hapus data ?')">
                                         @method('delete')
                                         @csrf
@@ -66,7 +72,7 @@ Pendaftaran
                                             <i class="fa fa-trash"></i>
                                             Delete
                                         </button>
-                                    </form>
+                                    </form> -->
                                         </td>
                                     </tr>
                                     @endforeach

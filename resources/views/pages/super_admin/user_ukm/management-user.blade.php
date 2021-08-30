@@ -9,12 +9,15 @@ Manajemen User
     @endpush
 
 @section('content')
+@include('layouts.message-flash')
+
 <section class="section">
     <div class="section-body">
         <div class="row">
             <div class="col-12">
                 <div class="card">
                     <div class="card-header">
+
                         <h4>Manajemen User UKM</h4>
                           <button type="button" class="btn btn-outline-primary mb-2" data-toggle="modal"
                 data-target="#TambahData">Tambah
@@ -34,12 +37,13 @@ Manajemen User
                                         <th>Nama UKM</th>
                                         <th>Foto UKM</th>
                                         <th>Email UKM</th>
+                                        <th>Username UKM</th>
                                         <th>Password UKM</th>
                                         <th>Action</th>
                        
                                     </tr>
                                 </thead>
-                                <tbody>
+                                <tbody >
                                     @foreach($item as $key=> $item)
                                     
                                     <tr class="text-center">
@@ -54,7 +58,12 @@ Manajemen User
                                         @else
                                         <td></td>
                                         @endif
+                                        @if($item == null)
+                                        <td> - </td>
+                                        @else
                                         <td>{{ $item->email }}</td>
+                                        @endif
+                                        <td>{{ $item->username }}</td>
                                         <td> ******** </td>
                                           <td class="flex" style="margin-top: 1em;">
                                         <button
@@ -66,7 +75,7 @@ Manajemen User
                                             </a>
                                         </button>
 
-                                        <form method="POST" action="{{ route('management-user.destroy', $item->id)}}"
+                                       <!--  <form method="POST" action="{{ route('management-user.destroy', $item->id)}}"
                                             onclick="deleteData('{{$item->id}}', this)">
                                             @csrf
                                             @method('DELETE')
@@ -76,7 +85,7 @@ Manajemen User
                                                     Delete
                                                 </i>
                                             </button>
-                                        </form>
+                                        </form> -->
                                     </td>
 
                                     </tr>
@@ -105,22 +114,23 @@ Manajemen User
                         method="post" enctype="multipart/form-data">
                         @csrf
                         <div class="card-body">
-                        <div class="form-group">
-                            <label>Nama UKM</label>
-                            
-
-                                <input type="text" value="" class="form-control" name="name">
-                               
-                            
+                          <div class="form-group">
+                        <label>Nama UKM</label>
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <div class="input-group-text">
+                                    <i class="fas fa-align-center"></i>
+                                </div>
+                            </div>           
+                            <select name="name" class="form-control form-control-sm mb-3">
+                                
+                                <option value="{{$ukm->nama_ukm}}">
+                                  {{$ukm->nama_ukm}}
+                                </option>
+                                
+                            </select>
                         </div>
-                        <div class="form-group">
-                            <label>Email</label>
-                            
-
-                                <input type="text" value="" class="form-control" name="email">
-                               
-                            
-                        </div>
+                    </div>
                         <div class="form-group">
                             <label>Password</label>
                             

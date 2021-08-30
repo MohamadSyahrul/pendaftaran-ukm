@@ -17,8 +17,8 @@ Profil {{ Auth::user()->name }}
                  
                     <div class="card-body">
                         <div class="author-box-left">
-                          @if($item->profile != null)
-                            <img alt="image" src="{{asset('img/'.$item->profile->foto)}}"
+                          @if($item != null)
+                            <img alt="image" src="{{asset('img/'.$item->foto)}}"
                                 class="rounded-circle author-box-picture">
 
                             <div class="clearfix"></div>
@@ -36,23 +36,23 @@ Profil {{ Auth::user()->name }}
                             <table>
                               <tr>
                                 <th>Nama :</th>
-                                <td> {{ $item->profile->nama }}</td>
+                                <td> {{ $item->nama }}</td>
                               </tr>
                               <tr>
                                 <th>NIM :</th>
-                                <td> {{ $item->profile->nim }}</td>
+                                <td> {{ $item->nim }}</td>
                               </tr>
                               <tr>
                                 <th>Nomor Tlp : </th>
-                                <td> 0{{ $item->profile->no_tlp }}</td>
+                                <td> 0{{ $item->no_tlp }}</td>
                               </tr>
                               <tr>
                                 <th>Alamat :</th>
-                                <td> {{ $item->profile->alamat }}</td>
+                                <td> {{ $item->alamat }}</td>
                               </tr>
                               <tr>
                                 <th>Prodi :</th>
-                                <td> {{ $item->profile->prodi }}</td>
+                                <td> {{ $item->prodi }}</td>
                               </tr>
                               <tr>
                                 <th>UKM :</th>
@@ -78,57 +78,7 @@ Profil {{ Auth::user()->name }}
         </div>
     </div>
                     @else
-    <button type="button" class="btn btn-outline-primary mb-2" data-toggle="modal" data-target="#TambahData">Tambahkan Data Profil</button>
-<div class="modal fade" id="TambahData" tabindex="-1" role="dialog" aria-labelledby="formModal" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="formModal">Tambah Data</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <form action="{{route('profile.store')}}" method="POST" enctype="multipart/form-data">
-                    @csrf
-                    @method('POST')
-                    <div class="form-group">
-                        <label>NIM</label>
-                        <input type="number" name="nim" value=""  placeholder="Masukan NIM" class="form-control">
-                    </div>
-                    <div class="form-group">
-                        <label>Nama</label>
-                        <input type="text" name="nama" value="" placeholder="Masukan Nama" class="form-control">
-                    </div>
-                    <div class="form-group">
-                        <label>Alamat</label>
-                        <input type="text" name="alamat" value="" placeholder="Masukan Alamat" class="form-control">
-                    </div>
-                    <div class="form-group">
-                        <label>No.Telp</label>
-                        <input type="number" name="no_tlp" value="" placeholder="contoh: 085473238594" class="form-control">
-                    </div>
-                    <div class="form-group">
-                        <label>Angkatan</label>
-                        <input type="text" name="angkatan" value="" placeholder="Masukan Angkatan Anda" class="form-control">
-                    </div>
-                    <div class="form-group">
-                        <label>Program Studi</label>
-                        <input type="text" name="prodi" value="" placeholder="Masukan Program Studi" class="form-control">
-                    </div>
-                    <div class="form-group">
-                        <label>Foto Profil</label>
-                        <input type="file" name="foto" class="form-control">
-                    </div>
-                    <div class="card-footer text-right">
-                        <button class="btn btn-primary mr-1" type="submit">Tambah</button>
-                        <button class="btn btn-secondary" type="reset">Reset</button>
-                    </div>
-                </form>         
-              </div>
-            </div>
-          </div> 
-        </div>
+  
         @endif 
          @endforeach
 @endsection

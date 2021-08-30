@@ -10,6 +10,8 @@ Edit UKM
 <link rel="stylesheet" href="{{asset('assets/bundles/jquery-selectric/selectric.css')}}">
 @endpush
 @section('content')
+@include('layouts.message-flash')
+
 <section class="section">
     <div class="section-body">
         <div class="row clearfix justify-content-center">
@@ -24,10 +26,10 @@ Edit UKM
                         @method('put')
                         <div class="card-body">
                         <div class="form-group">
-                            <label>Email</label>
+                            <label>Username</label>
                             
 
-                                <input type="text" value="{{ $item->email }}" class="form-control" name="email">
+                                <input type="text" value="{{ $item->username }}" class="form-control" name="username">
                                
                             
                         </div>

@@ -34,10 +34,10 @@ Edit UKM
                             @else
                             @endif
                             <div class="form-group">
-                                <label>Email</label>
+                                <label>Username</label>
                                 
 
-                                <input type="text" value="{{ $item->email }}" class="form-control" name="email">
+                                <input type="text" value="{{ $item->username }}" class="form-control" name="username">
                                 
                                 
                             </div>

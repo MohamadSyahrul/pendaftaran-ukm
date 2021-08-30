@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
+use App\Models\ListUkm;
 
 class ManagementUserController extends Controller
 {
@@ -16,9 +17,9 @@ class ManagementUserController extends Controller
      */
     public function index()
     {
-        
+        $ukm = ListUkm::latest()->first();
         $item = User::where('role', '!=' , 'admin')->where('role', '!=' , 'mahasiswa')->get();
-        return view('pages.super_admin.user_ukm.management-user', compact(['item']));
+        return view('pages.super_admin.user_ukm.management-user', compact(['item','ukm']));
 
     }
 
@@ -40,13 +41,19 @@ class ManagementUserController extends Controller
      */
     public function store(Request $request)
     {
+
+        if (User::where('role', '=',  $request->name)->exists() ){
+        return redirect()->route('management-user.index')->with(['error' => 'Data Sudah Ada']);
+    }
+    else{
         User::create([
-        'email' => $request->email,
+        // 'email' => $request->email,
         'password' => Hash::make($request->password),
         'role' => $request->name,
         'username' => $request->name,
        ]);
         return redirect()->route('management-user.index');
+        }
     }
 
     /**
@@ -87,7 +94,7 @@ class ManagementUserController extends Controller
 
         // dd($request->password);
        User::where('id', $id)->update([
-        'email' => $request->email,
+        'username' => $request->username,
         'password' => Hash::make($request->password),
        ]);
         return redirect()->route('management-user.index');

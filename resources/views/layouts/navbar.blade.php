@@ -77,9 +77,9 @@
         <div class="dropdown-menu dropdown-menu-right pullDown">
             <div class="dropdown-title">{{ Auth::user()->username }}</div>
             @if(Auth::user()->role == 'mahasiswa')
-            <a href="{{route('profile.index')}}" class="dropdown-item has-icon"> <i class="far
+           <!--  <a href="{{route('profile.index')}}" class="dropdown-item has-icon"> <i class="far
                     fa-user"></i> Profile
-            </a>
+            </a> -->
             <a href="{{route('change_password.index')}}" class="dropdown-item has-icon"> <i class="far
                     fa-user"></i> Change Password
             </a>

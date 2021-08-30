@@ -15,17 +15,13 @@ class RecruitmentController extends Controller
      */
     public function index()
     {
-        if (Auth::user()->profileUser != null) {
         
-        $data = anggota_ukm::where('profile_id', Auth::user()->profileUser->id)->get();
-
+        
+        $data = anggota_ukm::where('id_user', Auth::user()->id)->get();
+// dd($data);
          return view('pages.mahasiswa.pendaftaran_mahasiswa.index',compact('data'));
             
-        }
-        else{
-
-         return view('pages.mahasiswa.pendaftaran_mahasiswa.404_data_profile');
-        }
+    
          
     }
 
@@ -48,12 +44,50 @@ class RecruitmentController extends Controller
      */
     public function store(Request $request)
     {
-         anggota_ukm::create([
-            'ukm_id' => $request->input('ukm_id'),
-            'profile_id' => Auth::user()->profileUser->id,
-        ]);
-        return redirect()->route('recruitment.index')->with(['success' => 'Berhasil Mendaftar']);
+        if (anggota_ukm::where('nim', '=',   $request->input('nim'))->exists() && anggota_ukm::where('ukm_id', '=',   $request->input('ukm_id'))->exists()){
 
+        return redirect()->back()->with(['error' => 'Data Sudah Ada']);
+
+        }
+        else{
+
+
+          if($request->hasFile('foto')) {
+            $nm = $request->foto;
+            $namaFile = time() . rand(100, 999) . "." . $nm->getClientOriginalExtension();
+            // $user->foto = $namaFile;
+            $nm->move(public_path() . '/img', $namaFile);
+            anggota_ukm::create([
+            'nama' => $request->input('nama'),
+            'nim' => $request->input('nim'),
+            'no_tlp' => $request->input('no_tlp'),
+            'alamat' => $request->input('alamat'),
+            'angkatan' => $request->input('angkatan'),
+            'prodi' => $request->input('prodi'),
+            'foto' => $namaFile,
+            'id_user' => Auth::user()->id,
+            'ukm_id' => $request->input('ukm_id'),
+
+
+        ]);
+        }else{
+            $namaFile = 'default.png';
+            anggota_ukm::create([
+            'nama' => $request->input('nama'),
+            'nim' => $request->input('nim'),
+            'no_tlp' => $request->input('no_tlp'),
+            'alamat' => $request->input('alamat'),
+            'angkatan' => $request->input('angkatan'),
+            'prodi' => $request->input('prodi'),
+            'foto' => $namaFile,
+            'id_user' => Auth::user()->id,
+            'ukm_id' => $request->input('ukm_id'),
+
+
+        ]);
+        }
+        return redirect()->route('recruitment.index')->with(['success' => 'Berhasil Mendaftar']);
+        }
     }
 
     /**

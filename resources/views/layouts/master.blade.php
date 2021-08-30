@@ -7,7 +7,7 @@
   @stack('plugin-style')
 </head>
 
-<body>
+<body style="text-transform: uppercase;">
   <div class="loader"></div>
   <div id="app">
     <div class="main-wrapper main-wrapper-1">

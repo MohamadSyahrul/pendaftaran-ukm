@@ -76,7 +76,7 @@ class ChangePasswordController extends Controller
         // dd($request->logo);
         if ($request->logo == null) {
              User::where('id', $id)->update([
-         'email' => $request->email,
+         'username' => $request->username,
         'password' => Hash::make($request->password),
        ]);
         return redirect()->route('dashboard');
@@ -88,7 +88,7 @@ class ChangePasswordController extends Controller
 
         // dd($request->password);
        User::where('id', $id)->update([
-         'email' => $request->email,
+         'username' => $request->username,
         'password' => Hash::make($request->password),
        ]);
         return redirect()->route('dashboard'); 

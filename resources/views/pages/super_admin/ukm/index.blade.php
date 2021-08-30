@@ -1,6 +1,6 @@
 @extends('layouts.master')
 @section('title')
-Pendaftaran
+List UKM
 @endsection
 
     @push('plugin-style')
@@ -9,13 +9,15 @@ Pendaftaran
     @endpush
 
 @section('content')
+@include('layouts.message-flash')
+
 <section class="section">
     <div class="section-body">
         <div class="row">
             <div class="col-12">
                 <div class="card">
                     <div class="card-header">
-                        <h4>Daftar Pendaftar</h4>
+                        <h4>List UKM</h4>
                           <button type="button" class="btn btn-outline-primary mb-2" data-toggle="modal"
                 data-target="#TambahData">Tambah
                 Data</button>

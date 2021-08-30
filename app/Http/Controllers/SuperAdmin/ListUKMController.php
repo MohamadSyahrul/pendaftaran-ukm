@@ -37,12 +37,17 @@ class ListUKMController extends Controller
      */
     public function store(Request $request)
     {
+        if (ListUkm::where('nama_ukm', '=',   $request->input('ukm'))->exists() ){
+        return redirect()->route('list-ukm.index')->with(['error' => 'Data Sudah Ada']);
+        
+    }
+    else{
          ListUkm::create([
             'nama_ukm' => $request->input('ukm'),
         ]);
         // return view('pages.super_admin.ukm.index',compact('ukm'));
         return redirect('/super_admin/list-ukm');
-
+        }
     }
 
     /**

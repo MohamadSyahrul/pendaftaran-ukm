@@ -16,8 +16,15 @@ class CreateAnggotaUkmsTable extends Migration
         Schema::create('anggota_ukms', function (Blueprint $table) {
             $table->id();
             $table->integer('ukm_id');
-            $table->integer('profile_id');
-            $table->string('status')->default('Belum Terdaftar');
+            $table->string('status')->default('Belum Diterima');
+            $table->string('foto')->default('default.jpg');
+            $table->string('nama')->nullable();
+            $table->bigInteger('nim')->nullable();
+            $table->bigInteger('no_tlp')->nullable();
+            $table->string('alamat')->nullable();
+            $table->string('angkatan')->nullable();
+            $table->string('prodi')->nullable();
+            $table->foreignId('id_user')->references('id')->on('users');
             $table->timestamps();
         });
     }

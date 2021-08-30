@@ -15,14 +15,13 @@ class PendaftaranController extends Controller
      */
     public function index()
     {
-        if(Auth::user()->desk_ukm != null) {
-        $data = anggota_ukm::where('ukm_id', Auth::user()->desk_ukm->id)->get();  
-        return view('pages.admin.pendaftaran.pendaftaran',compact('data'));   
-        }
-        else{
-             $data = anggota_ukm::where('ukm_id', Auth::user()->desk_ukm)->get();  
-        return view('pages.admin.pendaftaran.pendaftaran',compact('data'));  
-        }
+
+        $data = anggota_ukm::where('ukm_id', Auth::user()->desk_ukm->id)->get();
+        $data_count_accepted = anggota_ukm::where('ukm_id', Auth::user()->desk_ukm->id)->where('status', 'Diterima')->count('nim');
+        $data_count = anggota_ukm::where('ukm_id', Auth::user()->desk_ukm->id)->count('nim');
+        // dd($data_count);
+        return view('pages.admin.pendaftaran.pendaftaran',compact(['data','data_count','data_count_accepted']));   
+     
     }
 
     /**
@@ -55,7 +54,7 @@ class PendaftaranController extends Controller
     public function show($id)
     {
         anggota_ukm::where('id', $id)->update([
-            'status' => 'Terdaftar',
+            'status' => 'Diterima',
         ]);
         return redirect()->route('pendaftaran.index');
     }

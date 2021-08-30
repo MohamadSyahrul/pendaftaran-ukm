@@ -21,4 +21,6 @@ class ListUkm extends Model
         return $this->belongsTo('App\Models\Ukm', 'nama_ukm' , 'ukm');
     }
 
+     
+
 }

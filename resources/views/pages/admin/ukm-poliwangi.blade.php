@@ -15,13 +15,13 @@ UKM POLIWANGI
             @if($list_ukm != null)           
             @if($item == null)
             <button type="button" class="btn btn-outline-primary mb-2" data-toggle="modal"
-                data-target="#TambahData">Tambah
+                data-target="#TambahData">Add
                 Data</button>
             @else
 
 
             <a href="{{route('ukm-poliwangi.edit',$item->id)}}">
-            <button type="button" class="btn btn-outline-primary mb-2">Ubah
+            <button type="button" class="btn btn-outline-primary mb-2">Edit
                 Data</button></a>
 
             <div class="col-12 col-md-12 col-lg-12">
