@@ -27,6 +27,6 @@ class ProfileUser extends Model
         return $this->hasOne('App\Models\User', 'id');
     }
     public function anggota_ukm() {
-        return $this->belongsTo('App\Models\anggota_ukm', 'id' , 'profile_id');
+        return $this->hasMany('App\Models\anggota_ukm', 'id' , 'profile_id');
     }
 }

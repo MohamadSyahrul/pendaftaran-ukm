@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers\Mahasiswa;
 
-use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
-use App\Models\anggota_ukm;
 use Auth;
+use App\Models\anggota_ukm;
+use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+
 class RecruitmentController extends Controller
 {
     /**
@@ -32,7 +33,7 @@ class RecruitmentController extends Controller
      */
     public function create()
     {
-         return view('pages.mahasiswa.pendaftaran_mahasiswa.sertifikat');
+        // 
         
     }
 
@@ -109,7 +110,7 @@ class RecruitmentController extends Controller
      */
     public function edit($id)
     {
-        //
+        // 
     }
 
     /**
@@ -135,5 +136,13 @@ class RecruitmentController extends Controller
         //
     }
 
+    public function pdf($id){
+
+        $user = anggota_ukm::with(['profile', 'ukm'])->find($id);
+        
+        $pdf = \PDF::loadView('pages.mahasiswa.sertifikat', compact('user'))->setPaper('a4', 'landscape');
+        return $pdf->download('Sertifikat.pdf');
+        // return view('pages.mahasiswa.sertifikat');
+    }
 
 }

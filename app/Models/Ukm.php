@@ -20,5 +20,9 @@ class Ukm extends Model
         public function event() {
         return $this->belongsTo('App\Models\Event', 'id' , 'ukm_id');
     }
+
+    public function anggota() {
+        return $this->hasMany('App\Models\anggota_ukm', 'id' , 'ukm_id');
+    }
     
 }

@@ -24,6 +24,9 @@ use App\Http\Controllers\Mahasiswa\UkmpoliwangiController as MahasiswaUkmpoliwan
 | contains the "web" middleware group. Now create something great!
 |
 */
+Route::get('/cetak', function(){
+    return view('pages.mahasiswa.sertifikat');
+});
 
 Route::get('/', function () {
     return view('auth.login');
@@ -69,15 +72,20 @@ Route::middleware([IsMahasiswa::class])
 ->group(function() {
 
     Route::resource('profile', ProfilController::class);
-    // Route::get('/edit-profile', function(){
-    //     return view('pages.edit-profil');
+    // Route::get('/cetak', function(){
+    //     return view('pages.mahasiswa.sertifikat');
     // });
     Route::resource('info-ukm', MahasiswaUkmpoliwangiController::class);
     Route::resource('recruitment', '\App\Http\Controllers\Mahasiswa\RecruitmentController');
+
+    Route::get('/recruitment/cetak/{id}', '\App\Http\Controllers\Mahasiswa\RecruitmentController@pdf')->name('cetak');
+
+
     Route::resource('event', EventController::class);
 });
 // Route::get('/dashboard', function () {
 //     return view('dashboard');
 // })->middleware(['auth'])->name('dashboard');
+
 
 require __DIR__.'/auth.php';
