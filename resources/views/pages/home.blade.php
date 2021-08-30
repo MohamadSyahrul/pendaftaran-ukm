@@ -16,7 +16,7 @@ Dashboard
 
 <section class="section">
     <div class="section-body">
-<<<<<<< HEAD
+<!-- <<<<<<< HEAD -->
         @if(Auth::user()->role == 'mahasiswa')
 
       <h2 class="text-info">Welcome To UKM Recruitment
@@ -25,7 +25,7 @@ Dashboard
         @endif
       
       <img class="img-responsive thumbnail" src="{{asset('assets/img/5217.jpg')}}" alt="" height="100%" width="100%">
-=======
+<!-- =======
         <div class="row">
             <div class="col-12 col-md-6 col-lg-12">
                 <div class="card">
@@ -45,7 +45,7 @@ Dashboard
                 </div>
             </div>
         </div>
->>>>>>> 8f24cac677cdae5e26da0ec0cbabf8b577ebe238
+>>>>>>> 8f24cac677cdae5e26da0ec0cbabf8b577ebe238 -->
     </div>
 </section>
 @endsection

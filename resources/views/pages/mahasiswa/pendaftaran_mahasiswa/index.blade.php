@@ -10,7 +10,6 @@ Profil {{ Auth::user()->name }}
 @section('content')
 @include('layouts.message-flash')
 
-<<<<<<< HEAD
  @foreach($data as $item)
     <div class="section-body">
         <div class="row d-flex justify-content-center">
@@ -22,19 +21,6 @@ Profil {{ Auth::user()->name }}
                           @if($item != null)
                             <img alt="image" src="{{asset('img/'.$item->foto)}}"
                                 class="rounded-circle author-box-picture">
-=======
-@foreach($data as $item)
-<div class="section-body">
-    <div class="row d-flex justify-content-center">
-        <div class="col-12 col-sm-12 col-lg-8">
-            <div class="card author-box card-primary">
->>>>>>> 8f24cac677cdae5e26da0ec0cbabf8b577ebe238
-
-                <div class="card-body">
-                    <div class="author-box-left">
-                        @if($item->profile != null)
-                        <img alt="image" src="{{asset('img/'.$item->profile->foto)}}"
-                            class="rounded-circle author-box-picture">
 
                         <div class="clearfix"></div>
                         <a href="{{ route('cetak', $item->id )}}" class="btn btn-primary mt-3">Sertifikat</a>
@@ -48,7 +34,6 @@ Profil {{ Auth::user()->name }}
                         <div class="author-box-job">{{ Auth::user()->role }}</div>
                         <div class="author-box-description">
                             <table>
-<<<<<<< HEAD
                               <tr>
                                 <th>Nama :</th>
                                 <td> {{ $item->nama }}</td>
@@ -82,47 +67,7 @@ Profil {{ Auth::user()->name }}
                                 class="btn btn-primary mt-1 rounded">{{ $item->status }}</a></td>
                                 @endif
                               </tr>
-=======
-                                <tr>
-                                    <th>Nama :</th>
-                                    <td> {{ $item->profile->nama }}</td>
-                                </tr>
-                                <tr>
-                                    <th>NIM :</th>
-                                    <td> {{ $item->profile->nim }}</td>
-                                </tr>
-                                <tr>
-                                    <th>Nomor Tlp : </th>
-                                    <td> 0{{ $item->profile->no_tlp }}</td>
-                                </tr>
-                                <tr>
-                                    <th>Alamat :</th>
-                                    <td> {{ $item->profile->alamat }}</td>
-                                </tr>
-                                <tr>
-                                    <th>Prodi :</th>
-                                    <td> {{ $item->profile->prodi }}</td>
-                                </tr>
-                                <tr>
-                                    <th>UKM :</th>
-                                    <td> {{ $item->ukm->ukm }}</td>
-                                </tr>
-                                <tr>
-                                    <th>Status :</th>
-                                    @if($item == null)
-                                    <td> 
-                                      <a href="#" disabled
-                                            class="btn btn-primary mt-1 rounded">
-                                            {{ $item->status }}</a>
-                                    </td>
-                                    @else
-                                    <td>
-                                      <a href="#" disabled
-                                            class="btn btn-primary mt-1 rounded">{{ $item->status }}</a>
-                                          </td>
-                                    @endif
-                                </tr>
->>>>>>> 8f24cac677cdae5e26da0ec0cbabf8b577ebe238
+
                             </table>
                         </div>
                         <div class="w-100 d-sm-none"></div>
@@ -132,13 +77,7 @@ Profil {{ Auth::user()->name }}
             </div>
         </div>
     </div>
-<<<<<<< HEAD
-                    @else
-  
-        @endif 
-         @endforeach
-=======
-</div>
+  </div>
 @else
 <button type="button" class="btn btn-outline-primary mb-2" data-toggle="modal" data-target="#TambahData">Tambahkan Data
     Profil</button>
@@ -197,7 +136,6 @@ Profil {{ Auth::user()->name }}
 </div>
 @endif
 @endforeach
->>>>>>> 8f24cac677cdae5e26da0ec0cbabf8b577ebe238
 @endsection
 @push('plugin-script')
 

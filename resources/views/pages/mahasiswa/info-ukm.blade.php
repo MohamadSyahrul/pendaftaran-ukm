@@ -11,7 +11,6 @@ UKM POLIWANGI
 @section('content')
 <section class="section">
     <div class="section-body">
-        <div class="row">
 
             @foreach ($ukm as $item)
             <div class="col-10 col-md-10 col-lg-10">
@@ -21,10 +20,7 @@ UKM POLIWANGI
                       
                     </div>
                     <div class="card-body">
- <!--                        <img class="rounded" src="{{asset('img/'. $item->foto)}}" alt="logo" height="90px">
-                        &emsp;
-                        <img class="rounded" src="{{asset('img/'. $item->foto1)}}" alt="logo" height="90px">
-                        <br> -->
+
                         <table width="100%">
                             <tr>   
                                 <td width="30%">
@@ -53,9 +49,9 @@ UKM POLIWANGI
                      
                     </div>
                 </div>
-                @endforeach
         </div>
+                @endforeach
+        
     </div>
-
 </section>
 @endsection
