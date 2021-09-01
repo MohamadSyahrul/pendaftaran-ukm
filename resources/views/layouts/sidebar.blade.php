@@ -29,7 +29,7 @@
         <a href="{{route('ukm-poliwangi.index')}}" class="nav-link"><i data-feather="archive"></i><span>UKM Poliwangi</span></a>
       </li>
       <li class="dropdown {{ request()->routeIs('pendaftaran.index') ? 'active' : '' }}">
-        <a href="{{route('pendaftaran.index')}}" class="nav-link"><i data-feather="user-plus"></i><span>Pendaftaran</span></a>
+        <a href="{{route('pendaftaran.index')}}" class="nav-link"><i data-feather="user-plus"></i><span>Anggota</span></a>
       </li>
       <li class="dropdown {{ request()->routeIs('kegiatan.index') ? 'active' : '' }}">
         <a href="{{route('kegiatan.index')}}" class="nav-link"><i data-feather="trending-up"></i><span>Kegiatan</span></a>

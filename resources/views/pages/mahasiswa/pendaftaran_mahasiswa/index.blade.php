@@ -21,18 +21,20 @@ Profil {{ Auth::user()->name }}
                           @if($item != null)
                             <img alt="image" src="{{asset('img/'.$item->foto)}}"
                                 class="rounded-circle author-box-picture">
-
+                           
                         <div class="clearfix"></div>
-                        <a href="{{ route('cetak', $item->id )}}" class="btn btn-primary mt-3">Sertifikat</a>
-
+                         @if($item->status == 'EX Anggota')
+                            <a href="{{ route('cetak', $item->id )}}" class="btn btn-primary mt-3">Sertifikat</a>
+                        @else
+                        @endif
                     </div>
 
                     <div class="author-box-details">
                         <div class="author-box-name">
                             <!-- <a href="#">{{ Auth::user()->name }}</a> -->
                         </div>
-                        <div class="author-box-job">{{ Auth::user()->role }}</div>
-                        <div class="author-box-description">
+                        <!-- <div class="author-box-job">{{ Auth::user()->role }}</div> -->
+                        <div class="author-box-description" style="margin-top: -1em">
                             <table>
                               <tr>
                                 <th>Nama :</th>
@@ -60,11 +62,15 @@ Profil {{ Auth::user()->name }}
                               </tr>
                               <tr>
                                 <th>Status :</th>
-                                @if($item == null)
-                                <td> - </td>
+                                @if($item->status == 'Diterima')
+                                <td><a href="#" disabled
+                                class="btn btn-primary mt-1 rounded">Anggota</a></td>
+                                @elseif($item->status == 'Belum Diterima')
+                                <td><a href="#" disabled
+                                class="btn btn-primary mt-1 rounded">Belum Diterima</a></td>
                                 @else
                                 <td><a href="#" disabled
-                                class="btn btn-primary mt-1 rounded">{{ $item->status }}</a></td>
+                                class="btn btn-primary mt-1 rounded">Demisioner</a></td>
                                 @endif
                               </tr>
 

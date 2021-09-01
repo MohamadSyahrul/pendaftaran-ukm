@@ -1,6 +1,6 @@
 @extends('layouts.master')
 @section('title')
-Pendaftaran
+Anggota
 @endsection
 
 @push('plugin-style')
@@ -10,7 +10,6 @@ Pendaftaran
 @endpush
 
 @section('content')
-<<<<<<< HEAD
     <div class="section-body">
         <div class="row">
             <div class="col-12">
@@ -22,13 +21,14 @@ Pendaftaran
                     </div>
                     <div class="card-body">
                         <p class="p-0 m-0 text-center">Pendaftar     : {{  $data_count }}</p>
-                        <p class="p-0 m-0 text-center">Anggota Yang Telah Diterima     : {{  $data_count_accepted }}</p>
+                        <p class="p-0 m-0 text-center">Anggota     : {{  $data_count_accepted }}</p>
+                        <p class="p-0 m-0 text-center">Demisioner     : {{  $data_count_demis }}</p>
 
                         <div class="table-responsive">
                             <table class="table table-striped" id="table-1">
-                                <thead>
+                                <thead class="text-center">
                                     <tr>
-                                        <th class="text-center">
+                                        <th >
                                             #
                                         </th>
                                         <th>NIM</th>
@@ -37,10 +37,10 @@ Pendaftaran
                                         <th>Jurusan</th>
                                         <th>UKM</th>
                                         <th>Status</th>
-                                        <!-- <th>Action</th> -->
+                                        <th>Action</th>
                                     </tr>
                                 </thead>
-                                <tbody>
+                                <tbody class="text-center">
                                     @foreach($data as $index => $item)
                                     <tr>
                                         <td>
@@ -56,16 +56,22 @@ Pendaftaran
                                         </td>
                                         <td>{{$item->prodi}}</td>
                                         <td>{{ $item->ukm->ukm }}</td>
-                                        @if($item->status != "Diterima")
+                                        @if($item->status == "Belum Diterima")
                                        <td><button type="submit" class="btn btn-outline-primary mb-2"> <a href="{{route('pendaftaran.show',$item->id)}}" > TERIMA </a> </button></td>
-                                        <td>
+                                         @elseif($item->status == "Diterima")
+                                        <td class="text-center">
+                                        <i data-feather="user"></i>
+                                         </td>
                                          @else
-                                         <td><button type="submit" class="btn btn-outline-primary mb-2">
-                                             <i data-feather="check"></i>
-                                         </button></td>
-                                        <td>
+                                         <td class="text-center">
+                                        <i data-feather="user-check"></i>
+                                         </td>                                      
+                                   @endif
+                                        @if($item->status == "Diterima")
+                                       <td><button type="submit" class="btn btn-outline-primary mb-2"> <a href="{{route('pendaftaran.show',$item->id)}}" > AKHIRI JABATAN </a> </button></td>
+                                        @else
+                                        <td> - </td>
                                          @endif
-                                    
                                   <!--   <form action="{{ route('pendaftaran.destroy',$item->id) }}" method="post"
                                         class="d-inline" onsubmit="return confirm('Yakin hapus data ?')">
                                         @method('delete')
@@ -81,77 +87,7 @@ Pendaftaran
                                 </tbody>
                             </table>
                         </div>
-=======
-<div class="section-body">
-    <div class="row">
-        <div class="col-12">
-            <div class="card">
-                <div class="card-header">
-                    <h4>Daftar Pendaftar</h4>
-                    <!-- <a href="#" class="btn btn-primary">Cetak</a> -->
-                </div>
-                <div class="card-body">
-                    <div class="table-responsive">
-                        <table class="table table-striped" id="table-1">
-                            <thead>
-                                <tr>
-                                    <th class="text-center">
-                                        #
-                                    </th>
-                                    <th>NIM</th>
-                                    <th>Nama</th>
-                                    <th>Foto</th>
-                                    <th>Jurusan</th>
-                                    <th>UKM</th>
-                                    <th>Status</th>
-                                    <th>Action</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                @foreach($data as $index => $item)
-                                <tr>
-                                    <td>
-                                        1
-                                    </td>
-                                    <td> {{$item->profile->nim}} </td>
-                                    <td>
-                                        {{$item->profile->nama}}
-                                    </td>
-                                    <td>
-                                        <img alt="image" src="{{asset('img/'.$item->profile->foto)}}"
-                                            class="rounded-circle author-box-picture" width="35px">
-                                    </td>
-                                    <td>{{$item->profile->prodi}}</td>
-                                    <td>{{ $item->ukm->ukm }}</td>
-                                    @if($item->status != "Terdaftar")
-                                    <td>
-                                        <button type="submit" class="btn btn-outline-primary mb-2"> <a
-                                                href="{{route('pendaftaran.show',$item->id)}}"> {{$item->status}}</a>
-                                        </button>
-                                    </td>
-                                    <td>
-                                        @else
-                                    <td>
-                                        {{$item->status}}
-                                    </td>
-                                    <td>
-                                        @endif
 
-                                        <form action="{{ route('pendaftaran.destroy',$item->id) }}" method="post"
-                                            class="d-inline" onsubmit="return confirm('Yakin hapus data ?')">
-                                            @method('delete')
-                                            @csrf
-                                            <button type="submit" class="dropdown-item has-icon text-danger">
-                                                <i class="fa fa-trash"></i>
-                                                Delete
-                                            </button>
-                                        </form>
-                                    </td>
-                                </tr>
-                                @endforeach
-                            </tbody>
-                        </table>
->>>>>>> 8f24cac677cdae5e26da0ec0cbabf8b577ebe238
                     </div>
                 </div>
             </div>

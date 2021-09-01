@@ -88,11 +88,11 @@
                 <!-- <p class="certificate-title"><strong>RENR NCLEX AND CONTINUING EDUCATION (CME) Review Masters</strong></p> -->
                 <h1>SERTIFIKAT KEANGGOTAAN</h1>
                 <p class="student-name">
-                    {{ $user->profile->nama }}
+                    {{ $user->nama }}
                 </p>
                 <div class="certificate-content">
                     <div class="text-center">
-                        <p class="topic-description text-muted">
+                        <p class="topic-description text-muted" style="text-transform: uppercase;">
                             Merupakan Anggota Resmi UKM {{ $user->ukm->ukm }}
                         </p>
                     </div>

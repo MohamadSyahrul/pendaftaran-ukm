@@ -81,13 +81,10 @@
                     fa-user"></i> Profile
 <<<<<<< HEAD
             </a> -->
-            <a href="{{route('change_password.index')}}" class="dropdown-item has-icon"> <i class="far
-                    fa-user"></i> Change Password
-=======
-            </a>
+ 
             <a href="{{route('change_password.index')}}" class="dropdown-item has-icon"> 
                 <i class="fas fa-lock"></i> Change Password
->>>>>>> 8f24cac677cdae5e26da0ec0cbabf8b577ebe238
+
             </a>
             @endif
             @if(Auth::user()->role == 'admin')

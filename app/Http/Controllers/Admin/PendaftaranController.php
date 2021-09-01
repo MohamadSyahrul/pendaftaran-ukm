@@ -16,11 +16,12 @@ class PendaftaranController extends Controller
     public function index()
     {
 
-        $data = anggota_ukm::where('ukm_id', Auth::user()->desk_ukm->id)->get();
+        $data = anggota_ukm::where('ukm_id', Auth::user()->desk_ukm->id)->orderBy('status', 'asc')->get();
         $data_count_accepted = anggota_ukm::where('ukm_id', Auth::user()->desk_ukm->id)->where('status', 'Diterima')->count('nim');
-        $data_count = anggota_ukm::where('ukm_id', Auth::user()->desk_ukm->id)->count('nim');
+        $data_count = anggota_ukm::where('ukm_id', Auth::user()->desk_ukm->id)->where('status', 'Belum Diterima')->count('nim');
+        $data_count_demis = anggota_ukm::where('ukm_id', Auth::user()->desk_ukm->id)->where('status', 'EX Anggota')->count('nim');
         // dd($data_count);
-        return view('pages.admin.pendaftaran.pendaftaran',compact(['data','data_count','data_count_accepted']));   
+        return view('pages.admin.pendaftaran.pendaftaran',compact(['data','data_count','data_count_accepted','data_count_demis']));   
      
     }
 
@@ -40,9 +41,9 @@ class PendaftaranController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, $id)
     {
-        //
+        
     }
 
     /**
@@ -53,9 +54,18 @@ class PendaftaranController extends Controller
      */
     public function show($id)
     {
-        anggota_ukm::where('id', $id)->update([
+        $data = anggota_ukm::where('id', $id)->first();
+        // dd($data->status);
+        if ($data->status == 'Diterima') {
+             anggota_ukm::where('id', $id)->update([
+            'status' => 'EX Anggota',
+        ]);
+        }
+      else{
+          anggota_ukm::where('id', $id)->update([
             'status' => 'Diterima',
         ]);
+      }
         return redirect()->route('pendaftaran.index');
     }
 
