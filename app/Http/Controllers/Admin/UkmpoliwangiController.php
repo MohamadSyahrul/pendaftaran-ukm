@@ -17,7 +17,7 @@ class UkmpoliwangiController extends Controller
      */
     public function index()
     {
-        $ukm = Ukm::where('ukm', Auth::user()->role)->first();
+        $ukm = Ukm::with('desk_ukm')->where('ukm', Auth::user()->role)->first();
         $list_ukm = ListUkm::where('nama_ukm', Auth::user()->role)->first();
         // dd($ukm);
         return view('pages.admin.ukm-poliwangi',[

@@ -24,5 +24,7 @@ class Ukm extends Model
     public function anggota() {
         return $this->hasMany('App\Models\anggota_ukm', 'id' , 'ukm_id');
     }
-    
+    public function desk_ukm() {
+        return $this->hasOne('App\Models\User', 'role' , 'ukm');
+    }
 }

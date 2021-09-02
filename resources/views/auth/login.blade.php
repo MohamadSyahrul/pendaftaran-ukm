@@ -5,11 +5,11 @@
 @section('content')
 
 <section class="row flexbox-container">
-    <div class="col-xl-8 col-11 d-flex justify-content-center">
+    <div class="col-xl-8 col-11 d-flex justify-content-center" >
         <div class="card bg-authentication rounded-0 mb-0">
             <div class="row m-0">
                 <div class="col-lg-6 d-lg-block d-none text-center align-self-center px-1 py-0">
-                    <img src="{{asset('vuexy/app-assets/images/pages/custom.jpg')}}" alt="branding logo">
+                    <img src="{{asset('vuexy/app-assets/images/pages/login.jpeg')}}" alt="branding logo">
                 </div>
                 <div class="col-lg-6 col-12 p-0">
                     <div class="card rounded-0 mb-0 px-2">
@@ -18,7 +18,7 @@
                                 <h4 class="mb-0">Login</h4>
                             </div>
                         </div>
-                        <p class="px-2">Selamat datang, Silakan Login ke akun Anda.</p>
+                        <p class="px-2">Selamat datang E-UKM Poliwangi </br> Silakan Login ke akun Anda.</p>
                         <div class="card-content">
                             <div class="card-body pt-1">
                                 <form method="POST" action="{{ route('login') }}">

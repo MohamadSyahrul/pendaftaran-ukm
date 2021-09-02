@@ -20,7 +20,7 @@ class PendaftaranEvent extends Model
 		return $this->belongsTo('App\Models\Ukm', 'ukm_id' , 'id');
 	}
 	public function profile() {
-		return $this->belongsTo('App\Models\ProfileUser', 'profile_id' , 'id');
+		return $this->belongsTo('App\Models\ProfileUser', 'profile_id' , 'id_user');
 	}
 	public function event() {
 		return $this->belongsTo('App\Models\ProfileUser', 'profile_id' , 'id');

@@ -3,9 +3,10 @@
 namespace App\Http\Controllers\Mahasiswa;
 
 use App\Models\Ukm;
+use App\Models\ProfileUser;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-
+use Auth;
 class UkmpoliwangiController extends Controller
 {
     /**
@@ -48,8 +49,10 @@ class UkmpoliwangiController extends Controller
      */
     public function show($id)
     {
+        $data = ProfileUser::where('id_user', Auth::user()->id)->first();
+        // dd($data);
         $ukm = Ukm::where('id', $id)->get();
-        return view('pages.mahasiswa.detail-info-ukm',compact('ukm'));
+        return view('pages.mahasiswa.detail-info-ukm',compact(['ukm','data']));
     }
 
     /**

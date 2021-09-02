@@ -10,6 +10,7 @@
         body {
             font-family: Roboto;
         }
+
         /* .certificate-container {
             padding: 50px;
             width: 1024px;
@@ -81,7 +82,12 @@
         <div class="certificate">
             <div class="water-mark-overlay"></div>
             <div class="certificate-header">
-                <img src="http://www.poliwangi.ac.id/vendors/uploads/2020/12/logo-poliwangi.png" class="logo" alt="">
+                <img src="http://www.poliwangi.ac.id/vendors/uploads/2020/12/logo-poliwangi.png" class="logo"
+                    alt="">
+                {{-- cuma iki perubahanku --}}
+                <span style="float: right;">
+                    <img src="{{ asset('img/', $user->ukm->logo) }}" class="logo" alt="">
+                </span>
             </div>
             <div class="certificate-body">
 
@@ -100,7 +106,7 @@
                 <div class="certificate-footer text-muted">
                     <div class="row">
                         <div class="col-md-6">
-                            <p>Principal: ______________________</p>
+                            <p>Sebagai: ______________________</p>
                         </div>
                         <div class="col-md-6">
                             <div class="row">

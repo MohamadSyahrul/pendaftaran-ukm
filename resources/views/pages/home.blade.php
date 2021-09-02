@@ -1,12 +1,12 @@
 @extends('layouts.master')
 @section('title')
-Dashboard
+    Dashboard
 @endsection
 @section('content')
-{{-- <section class="section">
+    {{-- <section class="section">
     <div class="section-body">
         <h2 class="text-info">Welcome To UKM Recruitment
-            @if(Auth::user()->role == 'mahasiswa')
+            @if (Auth::user()->role == 'mahasiswa')
             <a href="{{route('info-ukm.index')}}" class="btn btn-primary">Info UKM</a>
 @endif
 </h2>
@@ -14,38 +14,39 @@ Dashboard
 </div>
 </section> --}}
 
-<section class="section">
-    <div class="section-body">
-<!-- <<<<<<< HEAD -->
-        @if(Auth::user()->role == 'mahasiswa')
+    <section class="section">
+        <div class="section-body">
+            <!-- <<<<<<< HEAD -->
+            {{-- @if (Auth::user()->role == 'mahasiswa')
 
       <h2 class="text-info">Welcome To UKM Recruitment
           <a href="{{route('info-ukm.index')}}" class="btn btn-primary">Info UKM</a>
       </h2>
         @endif
       
-      <img class="img-responsive thumbnail" src="{{asset('assets/img/5217.jpg')}}" alt="" height="100%" width="100%">
-<!-- =======
-        <div class="row">
-            <div class="col-12 col-md-6 col-lg-12">
-                <div class="card">
-                    <div class="card-header">
-                        <h4>Welcome To UKM Recruitment</h4>
-                        @if(Auth::user()->role == 'mahasiswa')
-                        <a href="{{route('info-ukm.index')}}" class="btn btn-primary">Info UKM</a>
-                        @endif
-                      </div>
-                      <div class="card-body">
-                        <img class="img-responsive thumbnail" src="{{asset('/img/16291763087.png')}}" alt=""
-                            height="100%" width="100%">
-                    </div>
-                    {{-- <div class="card-footer">
+      <img class="img-responsive thumbnail" src="{{asset('assets/img/5217.jpg')}}" alt="" height="100%" width="100%"> --}}
+
+            <div class="row">
+                <div class="col-12 col-md-6 col-lg-12">
+                    <div class="card">
+                        <div class="card-header">
+                            @if (Auth::user()->role == 'mahasiswa')
+                                <h4>Welcome To UKM Recruitment</h4>
+
+                                <a href="{{ route('info-ukm.index') }}" class="btn btn-primary">Info UKM</a>
+                            @endif
+                        </div>
+                        <div class="card-body">
+                            <img class="img-responsive thumbnail" src="{{ asset('/img/16291763087.png') }}" alt=""
+                                height="100%" width="100%">
+                        </div>
+                        {{-- <div class="card-footer">
                       Footer Card
                   </div> --}}
+                    </div>
                 </div>
             </div>
+
         </div>
->>>>>>> 8f24cac677cdae5e26da0ec0cbabf8b577ebe238 -->
-    </div>
-</section>
+    </section>
 @endsection
