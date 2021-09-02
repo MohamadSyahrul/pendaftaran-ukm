@@ -82,47 +82,62 @@
         <div class="certificate">
             <div class="water-mark-overlay"></div>
             <div class="certificate-header">
-                <img src="http://www.poliwangi.ac.id/vendors/uploads/2020/12/logo-poliwangi.png" class="logo"
-                    alt="">
+             <!--    <img src="http://www.poliwangi.ac.id/vendors/uploads/2020/12/logo-poliwangi.png" class="logo"
+                    alt=""> -->
                 {{-- cuma iki perubahanku --}}
-                <span style="float: right;">
-                    <img src="{{ asset('img/', $user->ukm->logo) }}" class="logo" alt="">
-                </span>
+       
             </div>
             <div class="certificate-body">
 
                 <!-- <p class="certificate-title"><strong>RENR NCLEX AND CONTINUING EDUCATION (CME) Review Masters</strong></p> -->
-                <h1>SERTIFIKAT KEANGGOTAAN</h1>
-                <p class="student-name">
+                <div class="text-center">
+                    <img src="{{ ('poliwangi.jpg') }}" class="logo" alt="" style="max-width: 230px; max-height: 100px;margin-right: 2em">
+                    
+                    <img src="{{ ('img/'. $user->ukm->logo) }}" class="logo" alt="" style="max-width: 230px; max-height: 100px;">
+                </div>
+                <h2>SERTIFIKAT KEANGGOTAAN</h2>
+                <h4>Diberikan Kepada : </h4>
+                <h2 style="margin-top: -0.5em">
                     {{ $user->nama }}
-                </p>
-                <div class="certificate-content">
+                </h2>
+                <h3 style="margin-top: -0.5em">Sebagai : </h3>
+                <h3 style="text-transform: uppercase;margin-top: -0.5em">
+                    {{ $user->devisi }}
+                </h3>
+                <div class="certificate-content" style="margin-top: -2em">
                     <div class="text-center">
                         <p class="topic-description text-muted" style="text-transform: uppercase;">
-                            Merupakan Anggota Resmi UKM {{ $user->ukm->ukm }}
+                            {{ $user->ukm->ukm }}
                         </p>
+
                     </div>
-                </div>
-                <div class="certificate-footer text-muted">
-                    <div class="row">
-                        <div class="col-md-6">
-                            <p>Sebagai: ______________________</p>
+                     <div class="col-md-6 text-center" style="margin-top: -1em">
+                            <p>Keperguruan selama satu periode di " Unit Kegiatan Mahasiswa {{ $user->ukm->desk_ukm->name }} " Periode {{Carbon\Carbon::parse($user->tahun_masuk)->translatedFormat('Y') }} /  {{Carbon\Carbon::parse($user->tahun_selesai)->translatedFormat('Y') }}</p>
                         </div>
-                        <div class="col-md-6">
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <p>
-                                        Accredited by
-                                    </p>
+                </div>
+                    <div class="row">
+                       
+                         <div class="col-lg-12 text-center">
+                            <div class="p-0">
+                                <div  style="margin-left: -40em">
+                                    <p>Wakil Direktur III</p>
+                                    <p>Bidang Kemahasiswaan</p>
                                 </div>
-                                <div class="col-md-6">
-                                    <p>
-                                        Endorsed by
-                                    </p>
+                                <div   style="margin-top: -5em;margin-left: 40em">
+                                    <p>Pembina UKM {{ $user->ukm->ukm }}</p>
                                 </div>
                             </div>
                         </div>
-                    </div>
+                         <div class="col-lg-12" style="margin-top: 5em">
+                            <div class="p-0">
+                                <div align="left">
+                                ________________________________________
+                                </div>
+                                <div align="right" style="margin-top: -5em">
+                                ________________________________________
+                                </div>
+                            </div>
+                        </div> 
                 </div>
             </div>
         </div>

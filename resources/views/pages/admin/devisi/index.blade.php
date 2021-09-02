@@ -1,6 +1,6 @@
 @extends('layouts.master')
 @section('title')
-List UKM
+List Devisi
 @endsection
 
     @push('plugin-style')
@@ -17,7 +17,7 @@ List UKM
             <div class="col-12">
                 <div class="card">
                     <div class="card-header">
-                        <h4>List UKM</h4>
+                        <h4>List Devisi</h4>
                           <button type="button" class="btn btn-outline-primary mb-2" data-toggle="modal"
                 data-target="#TambahData">Add
                 </button>
@@ -27,47 +27,36 @@ List UKM
                             <table class="table table-striped" id="table-1">
                                 <thead>
                                     <tr class="text-center">
-                                        <th>
+                                    
                                             <th>
                                                 #
                                             </th>
                                             
-                                        </th>
-                                        <th>Nama UKM</th>
-                                        <th>Deskripsi UKM</th>
-                                        <th>Foto UKM</th>
+                                 
+                                        <th>Nama Devisi</th>
                                         <th>Action</th>
                        
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach($ukm as $key=> $item)
+                                    @foreach($data as $key=> $item)
                                     
                                     <tr class="text-center">
-                                        <td>
+                                
                                             <td>{{$key+1}}</td>
-                                        </td>
-                                        <td>{{$item->nama_ukm}}</td>
-                                        @if($item->ukm  != null)      
-                                        <td>{!! $item->ukm->keterangan !!}</td>
-                                        <td>
-                                            <img src="{{asset('img/'. $item->ukm->logo)}}" alt="logo" height="70px">
-                                        </td>
-                                        @else
-                                        <td></td>
-                                        <td></td>
-                                        @endif
-                                          <td class="flex" style="margin-top: 1em;">
+                            
+                                        <td>{{$item->nama_devisi}}</td>
+                                   <td class="flex" style="margin-top: 1em;">
                                         <button
                                            class="btn btn-outline-primary mb-2">
-                                            <a href="{{ route('list-ukm.edit',$item->id) }}">
+                                            <a href="{{ route('devisi.edit',$item->id) }}">
                                                 <i class="fas fa-edit">
                                                     Edit
                                                 </i>
                                             </a>
                                         </button>
 
-                                        <form method="POST" action="{{ route('list-ukm.destroy', $item->id)}}"
+                                        <form method="POST" action="{{ route('devisi.destroy', $item->id)}}"
                                             onclick="deleteData('{{$item->id}}', this)">
                                             @csrf
                                             @method('DELETE')
@@ -79,7 +68,6 @@ List UKM
                                             </button>
                                         </form>
                                     </td>
-
                                     </tr>
                                 @endforeach
 
@@ -96,23 +84,23 @@ List UKM
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="formModal">Tambah Data</h5>
+                <h5 class="modal-title" id="formModal">Tambah Devisi</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
             <div class="modal-body">
-                <form class="" action="{{route('list-ukm.store')}}" method="POST" enctype="multipart/form-data">
+                <form class="" action="{{route('devisi.store')}}" method="POST" enctype="multipart/form-data">
                     @csrf
                     <div class="form-group">
-                        <label>Nama UKM</label>
+                        <label>Devisi</label>
                         <div class="input-group">
                             <div class="input-group-prepend">
                                 <div class="input-group-text">
                                     <i class="fas fa-align-center"></i>
                                 </div>
                             </div>
-                            <input type="text" class="form-control" name="ukm">
+                            <input type="text" class="form-control" name="nama_devisi">
                         </div>
                     </div>
                     <button type="submit" class="btn btn-primary m-t-15 waves-effect">Submit</button>

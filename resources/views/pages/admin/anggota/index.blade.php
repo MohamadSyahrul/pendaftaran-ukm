@@ -10,6 +10,8 @@
 @endpush
 
 @section('content')
+    @include('layouts.message-flash')
+
     <div class="section-body">
         <div class="row">
             <div class="col-12">
@@ -20,9 +22,9 @@
                         <!-- <a href="#" class="btn btn-primary">Cetak</a> -->
                     </div>
                     <div class="card-body">
-                        <p class="p-0 m-0 text-center">Pendaftar : {{ $data_count }}</p>
-<!--                         <p class="p-0 m-0 text-center">Anggota : {{ $data_count_accepted }}</p>
-                        <p class="p-0 m-0 text-center">Demisioner : {{ $data_count_demis }}</p> -->
+                        <!-- <p class="p-0 m-0 text-center">Pendaftar : {{ $data_count }}</p> -->
+                        <p class="p-0 m-0 text-center">Anggota : {{ $data_count_accepted }}</p>
+                        <p class="p-0 m-0 text-center">Demisioner : {{ $data_count_demis }}</p>
 
                         <div class="table-responsive">
                             <table class="table table-striped" id="table-1">
@@ -36,8 +38,9 @@
                                         <th>Foto</th>
                                         <th>Jurusan</th>
                                         <th>UKM</th>
-                                        <th>Status</th>
-                                        <!-- <th>Status Keterangan</th> -->
+                                        <th>Jabatan</th>
+                                        <th>Status Keanggotaan</th>
+                                        <th>Status Keterangan</th>
                                         <th>Action</th>
                                     </tr>
                                 </thead>
@@ -57,6 +60,15 @@
                                             </td>
                                             <td>{{ $item->prodi }}</td>
                                             <td>{{ $item->ukm->ukm }}</td>
+                                             @if ($item->devisi == null)
+                                                <td><button type="submit" class="btn btn-outline-primary mb-2" data-toggle="modal"
+                                                data-target="#TambahData{{$item->id_user}}">  TAMBAH DEVISI                                                   
+                                            </button></td>
+                                            @else
+                                                <td class="text-center">
+                                                 {{ $item->devisi }}
+                                                </td>
+                                            @endif
                                             @if ($item->status == 'Belum Diterima')
                                                 <td><button type="submit" class="btn btn-outline-primary mb-2"> <a
                                                             href="{{ route('pendaftaran.show', $item->id) }}"> TERIMA
@@ -71,7 +83,7 @@
                                                     <i data-feather="user-check"></i>
                                                 </td>
                                             @endif
-                                          <!--   @if ($item->status == 'Diterima')
+                                            @if ($item->status == 'Diterima')
                                                 <td><button type="submit" class="btn btn-outline-primary mb-2"> <a
                                                             href="{{ route('pendaftaran.show', $item->id) }}"> AKHIRI
                                                             JABATAN </a> </button></td>
@@ -79,7 +91,7 @@
                                                 <td> Demisioner </td>
                                             @else
                                                 <td> {{ $item->status }} </td>
-                                            @endif -->
+                                            @endif
                                             <td>
                                                 <form action="{{ route('pendaftaran.destroy', $item->id) }}"
                                                     method="post" class="d-inline"
@@ -93,6 +105,36 @@
                                                 </form>
                                             </td>
                                         </tr>
+                                    <div class="modal fade" id="TambahData{{$item->id_user}}" tabindex="-1" role="dialog" aria-labelledby="formModal" aria-hidden="true">
+                                            <div class="modal-dialog" role="document">
+                                                    <div class="modal-content">
+                                                        <div class="modal-header">
+                                                            <h5 class="modal-title" id="formModal">Tambah Jabatan</h5>
+                                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                <span aria-hidden="true">&times;</span>
+                                                            </button>
+                                                        </div>
+                                                        <div class="modal-body">
+                                                            <form class="" action="{{route('keanggotaan.update',$item->id_user)}}" method="POST" enctype="multipart/form-data">
+                                                                @csrf
+                                                                @method('put')
+                                                                <div class="form-group">
+                                                                    <label>Jabatan</label>
+                                                                    <div class="input-group">
+                                                                        <div class="input-group-prepend">
+                                                                            <div class="input-group-text">
+                                                                                <i class="fas fa-align-center"></i>
+                                                                            </div>
+                                                                        </div>
+                                                                        <input type="text" class="form-control" name="nama_devisi">
+                                                                    </div>
+                                                                </div>
+                                                                <button type="submit" class="btn btn-primary m-t-15 waves-effect">Submit</button>
+                                                            </form>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
                                     @endforeach
                                 </tbody>
                             </table>
@@ -104,7 +146,7 @@
         </div>
     </div>
     </div>
-    
+
 @endsection
 @push('plugin-script')
     <script src="{{ asset('assets/bundles/datatables/datatables.min.js') }}"></script>

@@ -20,8 +20,8 @@ Manajemen User
 
                         <h4>Manajemen User UKM</h4>
                           <button type="button" class="btn btn-outline-primary mb-2" data-toggle="modal"
-                data-target="#TambahData">Tambah
-                Data</button>
+                data-target="#TambahData">Add
+                </button>
                     </div>
                     <div class="card-body">
                         <div class="table-responsive">

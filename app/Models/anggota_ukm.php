@@ -22,12 +22,16 @@ class anggota_ukm extends Model
         'prodi',
         'id_user',
         'ukm_id',
+        'devisi',
+        'tahun_masuk',
+        'tahun_selesai',
         'status'
 	];
 	public function ukm() {
 		return $this->belongsTo('App\Models\Ukm', 'ukm_id' , 'id');
 	}
-	// public function profile() {
-	// 	return $this->belongsTo('App\Models\ProfileUser', 'profile_id' , 'id');
+	// 	public function devisi() {
+	// 	return $this->belongsTo('App\Models\DevisiAnggota', 'ukm_id' , 'ukm_id');
 	// }
+	
 }

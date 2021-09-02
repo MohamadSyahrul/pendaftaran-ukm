@@ -139,9 +139,10 @@ class RecruitmentController extends Controller
     public function pdf($id){
 
         $user = anggota_ukm::with(['ukm'])->find($id);
+      
         
         $pdf = \PDF::loadView('pages.mahasiswa.sertifikat', compact('user'))->setPaper('a4', 'landscape');
-        return $pdf->download('Sertifikat.pdf');
+        return $pdf->stream($user->ukm->ukm .' ' .$user->nama.' Sertifikat.pdf');
         // return view('pages.mahasiswa.sertifikat');
     }
 

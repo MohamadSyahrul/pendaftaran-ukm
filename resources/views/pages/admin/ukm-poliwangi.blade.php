@@ -16,13 +16,13 @@
                     @if ($item == null)
                         <button type="button" class="btn btn-outline-primary mb-2" data-toggle="modal"
                             data-target="#TambahData">Add
-                            Data</button>
+                            </button>
                     @else
 
 
                         <a href="{{ route('ukm-poliwangi.edit', $item->id) }}">
                             <button type="button" class="btn btn-outline-primary mb-2">Edit
-                                Data</button></a>
+                                </button></a>
 
                         <div class="col-12 col-md-12 col-lg-12">
                             <div class="card">

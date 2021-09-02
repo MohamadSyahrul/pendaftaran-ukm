@@ -24,6 +24,9 @@ class CreateAnggotaUkmsTable extends Migration
             $table->string('alamat')->nullable();
             $table->string('angkatan')->nullable();
             $table->string('prodi')->nullable();
+            $table->string('divisi')->nullable();
+            $table->date('tahun_masuk')->nullable();
+            $table->date('tahun_selesai')->nullable();
             $table->foreignId('id_user')->references('id')->on('users');
             $table->timestamps();
         });

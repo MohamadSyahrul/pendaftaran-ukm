@@ -6,7 +6,7 @@ Kegiatan
 <section class="section">
     <div class="section-body">
         <a href="{{route('kegiatan.create')}}" class="btn btn-primary">
-        Add Event
+        Add
         </a>
         <div class="row justify-content-center">
             <div class="col-12 col-md-6 col-lg-10">
