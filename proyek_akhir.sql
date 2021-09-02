@@ -1,14 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 4.9.0.1
+-- version 5.1.0
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 02, 2021 at 09:46 AM
--- Server version: 10.4.6-MariaDB-log
--- PHP Version: 7.3.9
+-- Generation Time: Sep 02, 2021 at 01:53 PM
+-- Server version: 10.4.18-MariaDB
+-- PHP Version: 8.0.3
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -19,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `proyek_akhir`
+-- Database: `pendaftaran-ukm`
 --
 
 -- --------------------------------------------------------
@@ -39,6 +38,9 @@ CREATE TABLE `anggota_ukms` (
   `alamat` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `angkatan` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `prodi` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `devisi` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `tahun_masuk` date DEFAULT NULL,
+  `tahun_selesai` date DEFAULT NULL,
   `id_user` bigint(20) UNSIGNED NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
@@ -48,16 +50,38 @@ CREATE TABLE `anggota_ukms` (
 -- Dumping data for table `anggota_ukms`
 --
 
-INSERT INTO `anggota_ukms` (`id`, `ukm_id`, `status`, `foto`, `nama`, `nim`, `no_tlp`, `alamat`, `angkatan`, `prodi`, `id_user`, `created_at`, `updated_at`) VALUES
-(5, 1, 'EX Anggota', '1630494045683.jpeg', 'Eka Amaliyah', 361755401159, 85230203910, 'Banyuwangi', '2017', 'Teknik Informatika', 2076, '2021-09-01 04:00:45', '2021-09-01 05:54:52'),
-(6, 1, 'EX Anggota', '1630500846936.jpg', 'Ade Fian Galih Imandani', 361755401136, 81217372153, 'banyuwangi', '2017', 'Teknik Informatika', 1897, '2021-09-01 05:54:06', '2021-09-01 06:09:12'),
-(7, 1, 'Diterima', '1630502049468.png', 'Adam ferdinan nahdi', 361721401041, 82230989204, 'Banyuwangi', '2017', 'Teknik Mesin', 1617, '2021-09-01 06:14:09', '2021-09-01 06:18:19'),
-(8, 1, 'Diterima', '1630502477230.jpg', 'Abi tio bahtiar', 361321401013, 85211236272, 'Jember', '2017', 'Teknik Mesin', 75, '2021-09-01 06:21:17', '2021-09-01 19:17:58'),
-(9, 1, 'Belum Diterima', '1630502669683.jpeg', 'Ellen Diyah Ayu Tania', 361622401157, 895394042446, 'Muncar', NULL, 'Teknik Sipil', 1864, '2021-09-01 06:24:29', '2021-09-01 06:24:29'),
-(10, 2, 'Diterima', '1630502828399.jpeg', 'Ellen Diyah Ayu Tania', 361622401157, 895394042446, 'Muncar', '2017', 'Teknik Sipil', 1864, '2021-09-01 06:27:08', '2021-09-01 09:59:32'),
-(12, 1, 'Belum Diterima', '1630503413928.jpeg', 'Ella Nuritasari', 361593301133, 82301000725, 'Rogojampi', '2017', 'Manajemen Bisnis dan Pariwisata', 751, '2021-09-01 06:36:53', '2021-09-01 06:36:53'),
-(13, 1, 'Belum Diterima', '1630513758547.jpg', 'Abu Bakar Sidiq', 361455401121, 88214997000, 'Banyuwangi', '2017', 'Teknik Informatika', 556, '2021-09-01 09:29:18', '2021-09-01 09:29:18'),
-(14, 3, 'Belum Diterima', '1630513835306.jpg', 'Abu Bakar Sidiq', 361455401121, 88214997000, 'Banyuwangi', '2017', 'Teknik Informatika', 556, '2021-09-01 09:30:35', '2021-09-01 09:30:35');
+INSERT INTO `anggota_ukms` (`id`, `ukm_id`, `status`, `foto`, `nama`, `nim`, `no_tlp`, `alamat`, `angkatan`, `prodi`, `devisi`, `tahun_masuk`, `tahun_selesai`, `id_user`, `created_at`, `updated_at`) VALUES
+(5, 1, 'EX Anggota', '1630494045683.jpeg', 'Eka Amaliyah', 361755401159, 85230203910, 'Banyuwangi', '2017', 'Teknik Informatika', 'Wakil Ketua Umum', '2020-09-02', '2021-09-02', 2076, '2021-09-01 04:00:45', '2021-09-02 04:48:58'),
+(6, 1, 'EX Anggota', '1630500846936.jpg', 'Ade Fian Galih Imandani', 361755401136, 81217372153, 'banyuwangi', '2017', 'Teknik Informatika', 'Ketua Umum', '2020-09-02', '2021-09-02', 1897, '2021-09-01 05:54:06', '2021-09-02 04:47:03'),
+(7, 1, 'Diterima', '1630502049468.png', 'Adam ferdinan nahdi', 361721401041, 82230989204, 'Banyuwangi', '2017', 'Teknik Mesin', NULL, '2020-09-02', NULL, 1617, '2021-09-01 06:14:09', '2021-09-01 06:18:19'),
+(8, 1, 'Diterima', '1630502477230.jpg', 'Abi tio bahtiar', 361321401013, 85211236272, 'Jember', '2017', 'Teknik Mesin', NULL, '2020-09-02', NULL, 75, '2021-09-01 06:21:17', '2021-09-01 19:17:58'),
+(9, 1, 'Belum Diterima', '1630502669683.jpeg', 'Ellen Diyah Ayu Tania', 361622401157, 895394042446, 'Muncar', NULL, 'Teknik Sipil', NULL, NULL, NULL, 1864, '2021-09-01 06:24:29', '2021-09-01 06:24:29'),
+(10, 2, 'Diterima', '1630502828399.jpeg', 'Ellen Diyah Ayu Tania', 361622401157, 895394042446, 'Muncar', '2017', 'Teknik Sipil', NULL, '2020-09-02', NULL, 1864, '2021-09-01 06:27:08', '2021-09-01 09:59:32'),
+(12, 1, 'Belum Diterima', '1630503413928.jpeg', 'Ella Nuritasari', 361593301133, 82301000725, 'Rogojampi', '2017', 'Manajemen Bisnis dan Pariwisata', NULL, NULL, NULL, 751, '2021-09-01 06:36:53', '2021-09-01 06:36:53'),
+(13, 1, 'Diterima', '1630513758547.jpg', 'Abu Bakar Sidiq', 361455401121, 88214997000, 'Banyuwangi', '2017', 'Teknik Informatika', NULL, '2021-09-02', NULL, 556, '2021-09-01 09:29:18', '2021-09-02 04:37:45'),
+(14, 3, 'Belum Diterima', '1630513835306.jpg', 'Abu Bakar Sidiq', 361455401121, 88214997000, 'Banyuwangi', '2017', 'Teknik Informatika', NULL, NULL, NULL, 556, '2021-09-01 09:30:35', '2021-09-01 09:30:35');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `devisi_anggotas`
+--
+
+CREATE TABLE `devisi_anggotas` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `ukm_id` int(11) NOT NULL,
+  `nama_devisi` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `devisi_anggotas`
+--
+
+INSERT INTO `devisi_anggotas` (`id`, `ukm_id`, `nama_devisi`, `created_at`, `updated_at`) VALUES
+(1, 1, 'tari', '2021-09-02 02:06:59', '2021-09-02 02:29:43'),
+(3, 1, 'menyanyi', '2021-09-02 02:31:01', '2021-09-02 02:31:01');
 
 -- --------------------------------------------------------
 
@@ -134,7 +158,9 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (17, '2021_08_17_024558_create_pendaftaran_events_table', 6),
 (18, '2021_07_08_155703_create_tb_event_table', 7),
 (20, '2021_08_16_123934_create_anggota_ukms_table', 8),
-(21, '2021_07_22_124557_create_profile_users_table', 9);
+(21, '2021_07_22_124557_create_profile_users_table', 9),
+(22, '2021_08_30_001328_create_tbl_pendaftaran_ukms_table', 10),
+(25, '2021_09_02_083619_create_devisi_anggotas_table', 11);
 
 -- --------------------------------------------------------
 
@@ -687,6 +713,18 @@ INSERT INTO `profile_users` (`id`, `nama`, `nim`, `no_tlp`, `prodi`, `angkatan`,
 (495, 'Emilia zulva', 361393301016, '085648539529', 'D4 Manajemen Bisnis Pariwisata', NULL, 1461, NULL, NULL),
 (496, 'Emy wulandari', 361622401016, '083847645699', 'D3 Teknik Sipil', NULL, 1186, NULL, NULL),
 (497, 'ENDAH KHOLIFATUS SHOLIHAH', 361555401053, '085330871075', 'D3 Teknik Informatika', NULL, 1422, NULL, NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbl_pendaftaran_ukms`
+--
+
+CREATE TABLE `tbl_pendaftaran_ukms` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
 
@@ -1306,6 +1344,12 @@ ALTER TABLE `anggota_ukms`
   ADD KEY `anggota_ukms_id_user_foreign` (`id_user`);
 
 --
+-- Indexes for table `devisi_anggotas`
+--
+ALTER TABLE `devisi_anggotas`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `failed_jobs`
 --
 ALTER TABLE `failed_jobs`
@@ -1344,6 +1388,12 @@ ALTER TABLE `profile_users`
   ADD KEY `profile_users_id_user_foreign` (`id_user`);
 
 --
+-- Indexes for table `tbl_pendaftaran_ukms`
+--
+ALTER TABLE `tbl_pendaftaran_ukms`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `tb_event`
 --
 ALTER TABLE `tb_event`
@@ -1379,6 +1429,12 @@ ALTER TABLE `anggota_ukms`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
+-- AUTO_INCREMENT for table `devisi_anggotas`
+--
+ALTER TABLE `devisi_anggotas`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
 -- AUTO_INCREMENT for table `failed_jobs`
 --
 ALTER TABLE `failed_jobs`
@@ -1394,7 +1450,7 @@ ALTER TABLE `list_ukms`
 -- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
 
 --
 -- AUTO_INCREMENT for table `pendaftaran_events`
@@ -1407,6 +1463,12 @@ ALTER TABLE `pendaftaran_events`
 --
 ALTER TABLE `profile_users`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=498;
+
+--
+-- AUTO_INCREMENT for table `tbl_pendaftaran_ukms`
+--
+ALTER TABLE `tbl_pendaftaran_ukms`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `tb_event`
