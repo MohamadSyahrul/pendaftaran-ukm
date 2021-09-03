@@ -45,7 +45,7 @@ class RecruitmentController extends Controller
      */
     public function store(Request $request)
     {
-        if (anggota_ukm::where('nim', '=',   $request->input('nim'))->exists() && anggota_ukm::where('ukm_id', '=',   $request->input('ukm_id'))->exists()){
+        if (anggota_ukm::where('ukm_id', '=',   $request->input('ukm_id'))->where('nim', '=',   $request->input('nim'))->exists()){
 
         return redirect()->back()->with(['error' => 'Data Sudah Ada']);
 
