@@ -15,14 +15,11 @@
             <div class="col-12">
                 <div class="card">
                     <div class="card-header">
-                        <!--                         <h4>Pendaftar     : {{ $data_count }}</h4>
-                                                                    <h4>Anggota Yang Telah Diterima     : {{ $data_count_accepted }}</h4> -->
-                        <!-- <a href="#" class="btn btn-primary">Cetak</a> -->
+                      
                     </div>
                     <div class="card-body">
                         <p class="p-0 m-0 text-center">Pendaftar : {{ $data_count }}</p>
-<!--                         <p class="p-0 m-0 text-center">Anggota : {{ $data_count_accepted }}</p>
-                        <p class="p-0 m-0 text-center">Demisioner : {{ $data_count_demis }}</p> -->
+
 
                         <div class="table-responsive">
                             <table class="table table-striped" id="table-1">

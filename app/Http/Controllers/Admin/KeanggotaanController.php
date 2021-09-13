@@ -96,6 +96,7 @@ class KeanggotaanController extends Controller
      */
     public function destroy($id)
     {
-        //
+          anggota_ukm::where('id', $id)->delete();
+        return redirect()->route('keanggotaan.index');
     }
 }

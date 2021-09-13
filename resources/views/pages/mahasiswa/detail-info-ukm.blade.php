@@ -36,7 +36,7 @@
                             <div class="card-footer">
                                 <div align="left" class="pr-3">
                                     <button type="button" class="btn btn-outline-primary mb-2" data-toggle="modal"
-                                        data-target="#TambahData{{ $item->id }}">Register</button>
+                                        data-target="#TambahData{{ $item->id }}">Daftar</button>
                                     <!--  <form method="POST" action="{{ route('recruitment.store') }}"
                                                                                         >
                                                                                         @csrf
@@ -65,7 +65,7 @@
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="formModal"> Register </h5>
+                    <h5 class="modal-title" id="formModal"> Daftar UKM</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -141,7 +141,7 @@
                             <label>Foto Profil</label>
                             <input type="file" name="foto" required class="form-control">
                         </div>
-                        <button type="submit" class="btn btn-primary m-t-15 waves-effect">Submit</button>
+                        <button type="submit" class="btn btn-primary m-t-15 waves-effect">Daftar</button>
                     </form>
                 </div>
             </div>

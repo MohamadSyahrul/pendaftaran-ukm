@@ -22,8 +22,8 @@ Tambah Data
                         </div>
                     </div>
                     <div class="card-footer text-right">
-                        <button class="btn btn-primary mr-1" type="submit">Submit</button>
-                        <button class="btn btn-secondary" type="reset">Reset</button>
+                        <button class="btn btn-primary mr-1" type="submit">Tambah</button>
+                        <!-- <button class="btn btn-secondary" type="reset">Reset</button> -->
                     </div>
                 </div>
             </div>

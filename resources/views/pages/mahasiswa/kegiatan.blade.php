@@ -15,7 +15,7 @@ Kegiatan
                         <h4>{{$row->judul}}</h4>
                         <div class="card-header-action">
                             <a href="{{route('event.show', $row->id)}}" class="btn btn-primary">
-                                View
+                          <i class="fas fa-angle-double-right"></i>
                             </a>
                              
 

@@ -40,7 +40,7 @@ UKM POLIWANGI
                      
                                            <a href="{{route('info-ukm.show',$item->id)}}"  class="btn btn-primary mt-3">
                                                 <i class="far fa-eye">
-                                                            Detail
+                                                            Lihat UKM
                                                 </i> 
                                             </a>
                                    

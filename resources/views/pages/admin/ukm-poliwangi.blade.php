@@ -15,7 +15,7 @@
                 @if ($list_ukm != null)
                     @if ($item == null)
                         <button type="button" class="btn btn-outline-primary mb-2" data-toggle="modal"
-                            data-target="#TambahData">Add
+                            data-target="#TambahData">Tambah
                             </button>
                     @else
 

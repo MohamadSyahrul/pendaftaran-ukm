@@ -17,12 +17,9 @@
             <div class="col-12">
                 <div class="card">
                     <div class="card-header">
-                        <!--                         <h4>Pendaftar     : {{ $data_count }}</h4>
-                                                                    <h4>Anggota Yang Telah Diterima     : {{ $data_count_accepted }}</h4> -->
-                        <!-- <a href="#" class="btn btn-primary">Cetak</a> -->
+                      
                     </div>
                     <div class="card-body">
-                        <!-- <p class="p-0 m-0 text-center">Pendaftar : {{ $data_count }}</p> -->
                         <p class="p-0 m-0 text-center">Anggota : {{ $data_count_accepted }}</p>
                         <p class="p-0 m-0 text-center">Demisioner : {{ $data_count_demis }}</p>
 
@@ -62,7 +59,7 @@
                                             <td>{{ $item->ukm->ukm }}</td>
                                              @if ($item->devisi == null)
                                                 <td><button type="submit" class="btn btn-outline-primary mb-2" data-toggle="modal"
-                                                data-target="#TambahData{{$item->id_user}}">  TAMBAH DEVISI                                                   
+                                                data-target="#TambahData{{$item->id_user}}">  TAMBAH JABATAN                                                   
                                             </button></td>
                                             @else
                                                 <td class="text-center">

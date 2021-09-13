@@ -29,7 +29,7 @@ Detail Kegiatan
                         </div>
                     </div>
                     <div class="card-footer text-right">
-                        <a href="{{route('event.index')}}" class="btn btn-primary">Back</a>
+                        <a href="{{route('event.index')}}" class="btn btn-primary">Kembali</a>
                     </div>
                 </div>
             </div>
