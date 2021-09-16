@@ -33,6 +33,8 @@
                                         <th>Foto</th>
                                         <th>Jurusan</th>
                                         <th>UKM</th>
+                                        <th>Visi</th>
+                                        <th>Misi</th>
                                         <th>Status</th>
                                         <!-- <th>Status Keterangan</th> -->
                                         <th>Action</th>
@@ -54,6 +56,8 @@
                                             </td>
                                             <td>{{ $item->prodi }}</td>
                                             <td>{{ $item->ukm->ukm }}</td>
+                                            <td>{{ $item->visi }}</td>
+                                            <td>{{ $item->misi }}</td>
                                             @if ($item->status == 'Belum Diterima')
                                                 <td><button type="submit" class="btn btn-outline-primary mb-2"> <a
                                                             href="{{ route('pendaftaran.show', $item->id) }}"> TERIMA

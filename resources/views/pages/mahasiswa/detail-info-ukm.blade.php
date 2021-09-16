@@ -85,11 +85,11 @@
                             <input type="text" readonly name="nama" value="{{ $data->nama }}" placeholder="Masukan Nama"
                                 class="form-control">
                         </div>
-                        <div class="form-group">
+                    <!--     <div class="form-group">
                             <label>Alamat</label>
                             <input type="text" name="alamat" required value="" placeholder="Masukan Alamat"
                                 class="form-control">
-                        </div>
+                        </div> -->
                         <div class="form-group">
                             <label>No.Telp</label>
                             <input type="number" readonly name="no_tlp" value="{{ $data->no_tlp }}"
@@ -97,16 +97,31 @@
                         </div>
                         <div class="form-group">
                             <label>Angkatan</label>
-                            <input type="text" name="angkatan" required value="" placeholder="Masukan Angkatan Anda"
+                            <input type="text" name="angkatan" readonly required value="{{ $data->angkatan }}"
                                 class="form-control">
                         </div>
-                        <div class="input-group">
+                        <div class="form-group">
+                            <label>Prodi</label>
+                            <input type="text" name="prodi" readonly required value="{{ $data->prodi }}"
+                                class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label>Visi</label>
+                            <input type="text" name="visi" required 
+                                class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label>Misi</label>
+                            <input type="text" name="misi" required
+                                class="form-control">
+                        </div>
+                      <!--   <div class="input-group">
                             <div class="input-group-prepend">
                                 <div class="input-group-text">
                                     <i class="fas fa-align-center"></i>
                                 </div>
                             </div>
-                            <select name="prodi" class="form-control form-control-sm mb-3">
+                            <select name="prodi" disabled class="form-control form-control-sm mb-3">
 
                                 <option value="Teknik Informatika">
                                     Teknik Informatika
@@ -136,7 +151,7 @@
                                     Teknik Manufaktur Kapal
                                 </option>
                             </select>
-                        </div>
+                        </div> -->
                         <div class="form-group">
                             <label>Foto Profil</label>
                             <input type="file" name="foto" required class="form-control">

@@ -22,6 +22,8 @@ class anggota_ukm extends Model
         'prodi',
         'id_user',
         'ukm_id',
+        'visi',
+        'misi',
         'devisi',
         'tahun_masuk',
         'tahun_selesai',

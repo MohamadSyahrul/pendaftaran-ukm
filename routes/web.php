@@ -35,6 +35,8 @@ Route::get('/', function () {
 });
 
 Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+Route::get('/API', [DashboardController::class, 'API']);
+Route::get('/update_angkatan_anggota', [DashboardController::class, 'update_angkatan_anggota']);
 Route::resource('/change_password', ChangePasswordController::class);
 
 Route::middleware([IsUKM::class])

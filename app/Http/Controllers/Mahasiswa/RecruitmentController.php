@@ -68,7 +68,8 @@ class RecruitmentController extends Controller
             'foto' => $namaFile,
             'id_user' => Auth::user()->id,
             'ukm_id' => $request->input('ukm_id'),
-
+            'visi' => $request->input('visi'),
+            'misi' => $request->input('misi'),
 
         ]);
         }else{
@@ -83,7 +84,8 @@ class RecruitmentController extends Controller
             'foto' => $namaFile,
             'id_user' => Auth::user()->id,
             'ukm_id' => $request->input('ukm_id'),
-
+            'visi' => $request->input('visi'),
+            'misi' => $request->input('misi'),
 
         ]);
         }
